@@ -1,9 +1,12 @@
 package com.lvpeng.seller.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lvpeng.seller.common.ResultBean;
+import com.lvpeng.seller.mongo.model.SmsCode;
+import com.lvpeng.seller.mongo.repository.SmsCodeRepository;
 import com.lvpeng.seller.response.CheckBean;
 import com.lvpeng.seller.response.LoginBean;
 import com.lvpeng.seller.response.SmsCodeBean;
@@ -12,15 +15,29 @@ import com.lvpeng.seller.response.SmsCodeBean;
 @RequestMapping("/auth")
 public class AuthController {
 
+	@Autowired
+	private SmsCodeRepository smsCodeRepository;
+
 	@RequestMapping("/sms_code")
 	public ResultBean sms_code(String phone) {
 		ResultBean result = new ResultBean();
-		SmsCodeBean bean = new SmsCodeBean();
-		bean.setResult("123456");
+		try {
+			SmsCode smsCode = new SmsCode();
+			smsCode.setPhone(phone);
+			smsCode.setCode(Math.round(Math.random() * 100000) + "");
+			smsCode.setStatus("01");
+			smsCode.setCreateTime(System.currentTimeMillis());
+			smsCode = smsCodeRepository.save(smsCode);
 
-		result.setCode(0);
-		result.setData(bean);
+			SmsCodeBean bean = new SmsCodeBean();
+			bean.setResult(smsCode.getCode());
 
+			result.setCode(0);
+			result.setData(bean);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.setCode(-1);
+		}
 		return result;
 	}
 
