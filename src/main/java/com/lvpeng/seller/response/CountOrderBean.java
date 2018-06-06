@@ -1,7 +1,7 @@
 /**
   * Copyright 2018 Risingsun 
   */
-package com.lvpeng.seller.bean;
+package com.lvpeng.seller.response;
 
 /**
  * Auto-generated: 2018-06-05 22:22:46
@@ -9,7 +9,7 @@ package com.lvpeng.seller.bean;
  * @author Risingsun (Risingsun)
  * @website 
  */
-public class OrderBean {
+public class CountOrderBean {
 
     private int status;
     private int total;

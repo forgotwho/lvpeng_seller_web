@@ -1,15 +1,15 @@
 /**
   * Copyright 2018 Risingsun 
   */
-package com.lvpeng.seller.bean;
+package com.lvpeng.seller.response;
 
 /**
- * Auto-generated: 2018-06-05 22:18:36
+ * Auto-generated: 2018-06-05 22:16:47
  *
  * @author Risingsun (Risingsun)
  * @website 
  */
-public class CheckBean {
+public class SmsCodeBean {
 
     private String result;
     public void setResult(String result) {

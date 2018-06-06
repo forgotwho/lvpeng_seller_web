@@ -1,14 +1,14 @@
 /**
-  * Copyright 2018 Risingsun 
+  * Copyright 2018 bejson.com 
   */
-package com.lvpeng.seller.bean;
+package com.lvpeng.seller.response;
 import java.util.Date;
 
 /**
- * Auto-generated: 2018-06-05 22:27:1
+ * Auto-generated: 2018-06-06 18:54:11
  *
- * @author Risingsun (Risingsun)
- * @website 
+ * @author bejson.com (i@bejson.com)
+ * @website http://www.bejson.com/java2pojo/
  */
 public class OrderExpress {
 

@@ -9,7 +9,7 @@ package com.lvpeng.seller.bean;
  * @author Risingsun (Risingsun)
  * @website 
  */
-public class OrderBean {
+public class OrderStatusCountBean {
 
     private int status;
     private int total;

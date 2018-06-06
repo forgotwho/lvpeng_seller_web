@@ -1,7 +1,7 @@
 /**
   * Copyright 2018 Risingsun 
   */
-package com.lvpeng.seller.bean;
+package com.lvpeng.seller.response;
 import java.util.Date;
 import java.util.List;
 
