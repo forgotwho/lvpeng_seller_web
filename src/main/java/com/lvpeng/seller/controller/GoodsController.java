@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lvpeng.seller.bean.GoodsBean;
 import com.lvpeng.seller.common.ResultBean;
-import com.lvpeng.seller.mongo.model.InnerCategory;
+import com.lvpeng.seller.dal.model.InnerCategory;
 
 @RestController
 @RequestMapping("/goods")

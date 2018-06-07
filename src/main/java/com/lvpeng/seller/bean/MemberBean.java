@@ -6,7 +6,7 @@ package com.lvpeng.seller.bean;
 import java.util.Date;
 import java.util.List;
 
-import com.lvpeng.seller.mongo.model.MemberPresentDetail;
+import com.lvpeng.seller.dal.model.MemberPresentDetail;
 
 /**
  * Auto-generated: 2018-06-07 14:4:51

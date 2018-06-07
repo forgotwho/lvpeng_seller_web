@@ -11,8 +11,8 @@ import com.lvpeng.seller.bean.CheckBean;
 import com.lvpeng.seller.bean.LoginBean;
 import com.lvpeng.seller.bean.SmsCodeBean;
 import com.lvpeng.seller.common.ResultBean;
-import com.lvpeng.seller.mongo.model.SmsCode;
-import com.lvpeng.seller.mongo.repository.SmsCodeRepository;
+import com.lvpeng.seller.dal.model.SmsCode;
+import com.lvpeng.seller.dal.repository.SmsCodeRepository;
 
 @RestController
 @RequestMapping("/auth")

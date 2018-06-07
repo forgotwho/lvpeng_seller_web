@@ -12,9 +12,9 @@ import com.lvpeng.seller.bean.OrderNoteBean;
 import com.lvpeng.seller.bean.ShopStatusBean;
 import com.lvpeng.seller.bean.TodayCountBean;
 import com.lvpeng.seller.common.ResultBean;
-import com.lvpeng.seller.mongo.model.Notice;
-import com.lvpeng.seller.mongo.model.Shop;
-import com.lvpeng.seller.mongo.model.ShopChargeLimit;
+import com.lvpeng.seller.dal.model.Notice;
+import com.lvpeng.seller.dal.model.Shop;
+import com.lvpeng.seller.dal.model.ShopChargeLimit;
 
 @RestController
 public class CommonController {

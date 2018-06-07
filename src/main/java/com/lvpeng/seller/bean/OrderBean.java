@@ -6,10 +6,10 @@ package com.lvpeng.seller.bean;
 import java.util.Date;
 import java.util.List;
 
-import com.lvpeng.seller.mongo.model.Customer;
-import com.lvpeng.seller.mongo.model.OrderExpress;
-import com.lvpeng.seller.mongo.model.OrderGoodsInfo;
-import com.lvpeng.seller.mongo.model.OrderPriceHistory;
+import com.lvpeng.seller.dal.model.Customer;
+import com.lvpeng.seller.dal.model.OrderExpress;
+import com.lvpeng.seller.dal.model.OrderGoodsInfo;
+import com.lvpeng.seller.dal.model.OrderPriceHistory;
 
 /**
  * Auto-generated: 2018-06-07 13:36:39

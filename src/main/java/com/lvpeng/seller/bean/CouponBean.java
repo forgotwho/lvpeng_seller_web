@@ -5,7 +5,7 @@ package com.lvpeng.seller.bean;
 import java.util.Date;
 import java.util.List;
 
-import com.lvpeng.seller.mongo.model.CouponCustomerCount;
+import com.lvpeng.seller.dal.model.CouponCustomerCount;
 
 /**
  * Auto-generated: 2018-06-07 13:50:50

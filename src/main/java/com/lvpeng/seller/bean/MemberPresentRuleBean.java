@@ -6,8 +6,8 @@ package com.lvpeng.seller.bean;
 import java.util.Date;
 import java.util.List;
 
-import com.lvpeng.seller.mongo.model.CategoryRule;
-import com.lvpeng.seller.mongo.model.GoodsRule;
+import com.lvpeng.seller.dal.model.CategoryRule;
+import com.lvpeng.seller.dal.model.GoodsRule;
 
 /**
  * Auto-generated: 2018-06-07 11:31:33

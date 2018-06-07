@@ -6,8 +6,8 @@ package com.lvpeng.seller.bean;
 import java.util.Date;
 import java.util.List;
 
-import com.lvpeng.seller.mongo.model.DiscountCategory;
-import com.lvpeng.seller.mongo.model.DiscountGoods;
+import com.lvpeng.seller.dal.model.DiscountCategory;
+import com.lvpeng.seller.dal.model.DiscountGoods;
 
 /**
  * Auto-generated: 2018-06-07 11:31:33

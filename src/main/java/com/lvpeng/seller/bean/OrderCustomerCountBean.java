@@ -4,8 +4,8 @@
 package com.lvpeng.seller.bean;
 import java.util.Date;
 
-import com.lvpeng.seller.mongo.model.Customer;
-import com.lvpeng.seller.mongo.model.Member;
+import com.lvpeng.seller.dal.model.Customer;
+import com.lvpeng.seller.dal.model.Member;
 
 /**
  * Auto-generated: 2018-06-07 14:4:51

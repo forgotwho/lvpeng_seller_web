@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lvpeng.seller.common.ResultBean;
-import com.lvpeng.seller.mongo.model.Comment;
+import com.lvpeng.seller.dal.model.Comment;
 
 @RestController
 @RequestMapping("/comments")

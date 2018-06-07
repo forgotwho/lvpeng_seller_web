@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lvpeng.seller.common.ResultBean;
-import com.lvpeng.seller.mongo.model.SellerShop;
-import com.lvpeng.seller.mongo.repository.SellerShopRepository;
+import com.lvpeng.seller.dal.model.SellerShop;
+import com.lvpeng.seller.dal.repository.SellerShopRepository;
 
 @RestController
 @RequestMapping("/sellers")

@@ -6,9 +6,9 @@ package com.lvpeng.seller.bean;
 import java.util.Date;
 import java.util.List;
 
-import com.lvpeng.seller.mongo.model.BonusRule;
-import com.lvpeng.seller.mongo.model.DiscountRule;
-import com.lvpeng.seller.mongo.model.MemberPresentRule;
+import com.lvpeng.seller.dal.model.BonusRule;
+import com.lvpeng.seller.dal.model.DiscountRule;
+import com.lvpeng.seller.dal.model.MemberPresentRule;
 
 /**
  * Auto-generated: 2018-06-07 11:31:33
