@@ -1,46 +1,33 @@
 /**
-  * Copyright 2018 Risingsun 
+  * Copyright 2018 bejson.com 
   */
 package com.lvpeng.seller.bean;
 
 /**
- * Auto-generated: 2018-06-05 22:20:46
+ * Auto-generated: 2018-06-07 11:21:19
  *
- * @author Risingsun (Risingsun)
- * @website 
+ * @author bejson.com (i@bejson.com)
+ * @website http://www.bejson.com/java2pojo/
  */
 public class OrderCountBean {
 
-    private int income;
-    private int paymentOrder;
-    private int paymentGoods;
-    private int visitShopLog;
-    public void setIncome(int income) {
-         this.income = income;
-     }
-     public int getIncome() {
-         return income;
-     }
+	private int status;
+	private int total;
 
-    public void setPaymentOrder(int paymentOrder) {
-         this.paymentOrder = paymentOrder;
-     }
-     public int getPaymentOrder() {
-         return paymentOrder;
-     }
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
-    public void setPaymentGoods(int paymentGoods) {
-         this.paymentGoods = paymentGoods;
-     }
-     public int getPaymentGoods() {
-         return paymentGoods;
-     }
+	public int getStatus() {
+		return status;
+	}
 
-    public void setVisitShopLog(int visitShopLog) {
-         this.visitShopLog = visitShopLog;
-     }
-     public int getVisitShopLog() {
-         return visitShopLog;
-     }
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
+	public int getTotal() {
+		return total;
+	}
 
 }

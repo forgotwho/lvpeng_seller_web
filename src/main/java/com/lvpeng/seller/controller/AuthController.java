@@ -1,15 +1,18 @@
 package com.lvpeng.seller.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lvpeng.seller.bean.CheckBean;
+import com.lvpeng.seller.bean.LoginBean;
+import com.lvpeng.seller.bean.SmsCodeBean;
 import com.lvpeng.seller.common.ResultBean;
 import com.lvpeng.seller.mongo.model.SmsCode;
 import com.lvpeng.seller.mongo.repository.SmsCodeRepository;
-import com.lvpeng.seller.response.CheckBean;
-import com.lvpeng.seller.response.LoginBean;
-import com.lvpeng.seller.response.SmsCodeBean;
 
 @RestController
 @RequestMapping("/auth")
@@ -18,7 +21,27 @@ public class AuthController {
 	@Autowired
 	private SmsCodeRepository smsCodeRepository;
 
-	@RequestMapping("/sms_code")
+	/**
+	 * 登录
+	 */
+	@RequestMapping(value = "/login")
+	@ResponseBody
+	public ResultBean login(String phone, String sms_code, String app_code) {
+		ResultBean result = new ResultBean();
+		LoginBean bean = new LoginBean();
+		bean.setLogin_code("token");
+
+		result.setCode(0);
+		result.setData(bean);
+
+		return result;
+	}
+
+	/**
+	 * 短信验证码
+	 */
+	@RequestMapping(value = "/sms_code")
+	@ResponseBody
 	public ResultBean sms_code(String phone) {
 		ResultBean result = new ResultBean();
 		try {
@@ -26,7 +49,7 @@ public class AuthController {
 			smsCode.setPhone(phone);
 			smsCode.setCode(Math.round(Math.random() * 100000) + "");
 			smsCode.setStatus("01");
-			smsCode.setCreateTime(System.currentTimeMillis());
+			smsCode.setCreateTime(new Date());
 			smsCode = smsCodeRepository.save(smsCode);
 
 			SmsCodeBean bean = new SmsCodeBean();
@@ -41,19 +64,9 @@ public class AuthController {
 		return result;
 	}
 
-	@RequestMapping("/login")
-	public ResultBean login(String phone, String sms_code, String app_code) {
-		ResultBean result = new ResultBean();
-		LoginBean bean = new LoginBean();
-		bean.setLogin_code(
-				"R09PMVlhUnB2eUZBMlNlaHFHc3lzRUdJakhCbWlPVXcjTGVTaGFyZSM0I0xlU2hhcmUjQXN5UXJKSjJBM0plYVBzNGEyTThyczlmaTRBemdSY2c");
-
-		result.setCode(0);
-		result.setData(bean);
-
-		return result;
-	}
-
+	/**
+	 * 检查登录情况
+	 */
 	@RequestMapping("/check")
 	public ResultBean check(String login_code) {
 		ResultBean result = new ResultBean();

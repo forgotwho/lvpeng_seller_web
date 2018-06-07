@@ -1,5 +1,5 @@
 /**
-  * Copyright 2018 Risingsun 
+  * Copyright 2018 bejson.com 
   */
 package com.lvpeng.seller.mongo.model;
 
@@ -9,10 +9,10 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 
 /**
- * Auto-generated: 2018-06-05 22:19:46
+ * Auto-generated: 2018-06-07 11:16:23
  *
- * @author Risingsun (Risingsun)
- * @website
+ * @author bejson.com (i@bejson.com)
+ * @website http://www.bejson.com/java2pojo/
  */
 public class Shop {
 

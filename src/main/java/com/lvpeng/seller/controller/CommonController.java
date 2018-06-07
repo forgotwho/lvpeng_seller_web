@@ -6,15 +6,15 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lvpeng.seller.bean.OrderBean;
+import com.lvpeng.seller.bean.OrderCountBean;
+import com.lvpeng.seller.bean.OrderNoteBean;
+import com.lvpeng.seller.bean.ShopStatusBean;
+import com.lvpeng.seller.bean.TodayCountBean;
 import com.lvpeng.seller.common.ResultBean;
-import com.lvpeng.seller.response.CountBean;
-import com.lvpeng.seller.response.CountOrderBean;
-import com.lvpeng.seller.response.NoticesBean;
-import com.lvpeng.seller.response.OrderBean;
-import com.lvpeng.seller.response.OrderNoteBean;
-import com.lvpeng.seller.response.ShopChargeLimitBean;
-import com.lvpeng.seller.response.ShopStatusBean;
-import com.lvpeng.seller.response.ShopsBean;
+import com.lvpeng.seller.mongo.model.Notice;
+import com.lvpeng.seller.mongo.model.Shop;
+import com.lvpeng.seller.mongo.model.ShopChargeLimit;
 
 @RestController
 public class CommonController {
@@ -22,7 +22,7 @@ public class CommonController {
 	@RequestMapping("/shop_charge_limit")
 	public ResultBean shop_charge_limit() {
 		ResultBean result = new ResultBean();
-		ShopChargeLimitBean bean = new ShopChargeLimitBean();
+		ShopChargeLimit bean = new ShopChargeLimit();
 		result.setCode(0);
 		result.setData(bean);
 
@@ -32,7 +32,7 @@ public class CommonController {
 	@RequestMapping("/shops")
 	public ResultBean shops() {
 		ResultBean result = new ResultBean();
-		ShopsBean bean = new ShopsBean();
+		Shop bean = new Shop();
 
 		result.setCode(0);
 		result.setData(bean);
@@ -54,7 +54,7 @@ public class CommonController {
 	@RequestMapping("/notices")
 	public ResultBean notices(int from, int limit, String status) {
 		ResultBean result = new ResultBean();
-		List<NoticesBean> beanList = new ArrayList<NoticesBean>();
+		List<Notice> beanList = new ArrayList<Notice>();
 
 		result.setCode(0);
 		result.setData(beanList);
@@ -65,7 +65,7 @@ public class CommonController {
 	@RequestMapping("/count")
 	public ResultBean count(String count_type) {
 		ResultBean result = new ResultBean();
-		CountBean bean = new CountBean();
+		TodayCountBean bean = new TodayCountBean();
 
 		result.setCode(0);
 		result.setData(bean);
@@ -76,7 +76,7 @@ public class CommonController {
 	@RequestMapping("/count/order")
 	public ResultBean countOrder() {
 		ResultBean result = new ResultBean();
-		List<CountOrderBean> beanList = new ArrayList<CountOrderBean>();
+		List<OrderCountBean> beanList = new ArrayList<OrderCountBean>();
 
 		result.setCode(0);
 		result.setData(beanList);
