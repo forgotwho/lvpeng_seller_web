@@ -3,7 +3,6 @@ package com.lvpeng.seller.controller;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,9 +17,6 @@ import com.lvpeng.seller.dal.repository.ShopRepository;
 @RestController
 @RequestMapping("/auth")
 public class InitController {
-	
-	@Autowired
-    private MongoTemplate mongo;
 
 	@Autowired
 	private SellerRepository sellerRepository;
@@ -39,6 +35,7 @@ public class InitController {
 		ResultBean result = new ResultBean();
 
 		Seller seller = new Seller();
+		seller.setId(1);
 		seller.setAppCode("XXX");
 		seller.setCreateTime(new Date());
 		seller.setPhone("13816638520");
@@ -47,9 +44,10 @@ public class InitController {
 		seller = sellerRepository.insert(seller);
 
 		Shop shop = new Shop();
+		shop.setId(1);
 		shop.setAddress("十堰");
 		shop.setAutoOrder(0);
-		shop.setAvatar("");
+		shop.setAvatar("http://ostb6zm4z.bkt.clouddn.com/SMGZJ.png");
 		shop.setCategoryId(1);
 		shop.setCategoryName("餐饮");
 		shop.setCreateTime(new Date());
@@ -73,14 +71,16 @@ public class InitController {
 		sellerShop.setSellerId(seller.getId());
 		sellerShop.setShopId(shop.getId());
 		sellerShop.setShopName("十堰饭来张口");
-		sellerShop.setAvatar("");
+		sellerShop.setAvatar("http://ostb6zm4z.bkt.clouddn.com/SMGZJ.png");
+		sellerShop.setCreateTime(new Date());
 
 		sellerShopRepository.save(sellerShop);
 
 		shop = new Shop();
+		shop.setId(2);
 		shop.setAddress("南化");
 		shop.setAutoOrder(0);
-		shop.setAvatar("");
+		shop.setAvatar("http://img.leshare.shop/seller/shulanriyongpin.png");
 		shop.setCategoryId(1);
 		shop.setCategoryName("餐饮");
 		shop.setCreateTime(new Date());
@@ -104,7 +104,8 @@ public class InitController {
 		sellerShop.setSellerId(seller.getId());
 		sellerShop.setShopId(shop.getId());
 		sellerShop.setShopName("南化饭来张口");
-		sellerShop.setAvatar("");
+		sellerShop.setAvatar("http://img.leshare.shop/seller/shulanriyongpin.png");
+		sellerShop.setCreateTime(new Date());
 		sellerShopRepository.save(sellerShop);
 
 		result.setCode(0);

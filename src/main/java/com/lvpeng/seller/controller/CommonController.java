@@ -19,7 +19,7 @@ import com.lvpeng.seller.dal.model.ShopChargeLimit;
 @RestController
 public class CommonController {
 
-	@RequestMapping("/shop_charge_limit")
+	@RequestMapping(value="/shop_charge_limit",produces="application/json;charset=UTF-8")
 	public ResultBean shop_charge_limit() {
 		ResultBean result = new ResultBean();
 		ShopChargeLimit bean = new ShopChargeLimit();
@@ -62,7 +62,7 @@ public class CommonController {
 		return result;
 	}
 
-	@RequestMapping("/count")
+	@RequestMapping(value="/count",produces="application/json;charset=UTF-8")
 	public ResultBean count(String count_type) {
 		ResultBean result = new ResultBean();
 		TodayCountBean bean = new TodayCountBean();
@@ -73,7 +73,7 @@ public class CommonController {
 		return result;
 	}
 
-	@RequestMapping("/count/order")
+	@RequestMapping(value="/count/order",produces="application/json;charset=UTF-8")
 	public ResultBean countOrder() {
 		ResultBean result = new ResultBean();
 		List<OrderCountBean> beanList = new ArrayList<OrderCountBean>();
@@ -84,7 +84,7 @@ public class CommonController {
 		return result;
 	}
 
-	@RequestMapping("/orders")
+	@RequestMapping(value="/orders",produces="application/json;charset=UTF-8")
 	public ResultBean orders() {
 		ResultBean result = new ResultBean();
 		List<OrderBean> beanList = new ArrayList<OrderBean>();
