@@ -11,10 +11,20 @@ package com.lvpeng.seller.bean;
  */
 public class ShopStatusBean {
 
+	private int shopId;
 	private String status;
 	private String beginTime;
 	private String endTime;
 	private boolean open;
+	
+
+	public int getShopId() {
+		return shopId;
+	}
+
+	public void setShopId(int shopId) {
+		this.shopId = shopId;
+	}
 
 	public void setStatus(String status) {
 		this.status = status;

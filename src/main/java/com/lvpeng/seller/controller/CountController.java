@@ -1,11 +1,14 @@
 package com.lvpeng.seller.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lvpeng.seller.bean.MonthCountBean;
+import com.lvpeng.seller.bean.OrderCountBean;
 import com.lvpeng.seller.bean.TodayCountBean;
 import com.lvpeng.seller.common.ResultBean;
 
@@ -20,7 +23,13 @@ public class CountController {
 	public ResultBean count(String count_type) {
 		ResultBean result = new ResultBean();
 		result.setCode(0);
-		result.setData(new TodayCountBean());
+		if("TODAY".equals(count_type)){
+			TodayCountBean bean = new TodayCountBean();
+			result.setData(bean);
+		}else if("MONTH".equals(count_type)){
+			MonthCountBean bean = new MonthCountBean();
+			result.setData(bean);
+		}
 		return result;
 	}
 
@@ -30,8 +39,9 @@ public class CountController {
 	@RequestMapping(value = "/order", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
 	public ResultBean order() {
 		ResultBean result = new ResultBean();
+		List<OrderCountBean> beanList = new ArrayList<OrderCountBean>();
 		result.setCode(0);
-		result.setData(new ArrayList());
+		result.setData(beanList);
 		return result;
 	}
 

@@ -44,15 +44,5 @@ public class SellerController {
 		return result;
 	}
 
-	/**
-	 * 店铺分类
-	 */
-	@RequestMapping(value = "/shop_parent_categories/0", method = RequestMethod.GET)
-	public ResultBean getShopCategories() {
-		ResultBean result = new ResultBean();
-		result.setCode(0);
-
-		return result;
-	}
 
 }

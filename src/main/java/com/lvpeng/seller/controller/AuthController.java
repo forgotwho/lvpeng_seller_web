@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lvpeng.seller.bean.CheckBean;
 import com.lvpeng.seller.bean.LoginBean;
 import com.lvpeng.seller.bean.SmsCodeBean;
+import com.lvpeng.seller.common.ErrorBean;
 import com.lvpeng.seller.common.ResultBean;
 import com.lvpeng.seller.dal.model.Seller;
 import com.lvpeng.seller.dal.model.SmsCode;
@@ -39,20 +40,23 @@ public class AuthController {
 
 		if (seller == null) {
 			result.setCode(-1);
-			result.setMessage("手机号不存在");
+			ErrorBean error = new ErrorBean("手机号不存在");
+			result.setData(error);
 			return result;
 		}
 		seller = sellerRepository.findByPhoneAndAppCode(phone, app_code);
 		if (seller == null) {
 			result.setCode(-1);
-			result.setMessage("app_code非法");
+			ErrorBean error = new ErrorBean("app_code非法");
+			result.setData(error);
 			return result;
 		}
 
 		SmsCode smsCode = smsCodeRepository.findByPhoneAndCode(phone, sms_code);
 		if (smsCode == null) {
 			result.setCode(-1);
-			result.setMessage("验证码错误");
+			ErrorBean error = new ErrorBean("验证码错误");
+			result.setData(error);
 			return result;
 		}
 

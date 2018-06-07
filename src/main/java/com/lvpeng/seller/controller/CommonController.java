@@ -3,7 +3,10 @@ package com.lvpeng.seller.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lvpeng.seller.bean.OrderBean;
@@ -13,27 +16,28 @@ import com.lvpeng.seller.bean.ShopStatusBean;
 import com.lvpeng.seller.bean.TodayCountBean;
 import com.lvpeng.seller.common.ResultBean;
 import com.lvpeng.seller.dal.model.Notice;
-import com.lvpeng.seller.dal.model.Shop;
+import com.lvpeng.seller.dal.model.ShopCategory;
 import com.lvpeng.seller.dal.model.ShopChargeLimit;
+import com.lvpeng.seller.dal.repository.SellerRepository;
+import com.lvpeng.seller.dal.repository.ShopCategoryRepository;
+import com.lvpeng.seller.dal.repository.ShopChargeLimitRepository;
 
 @RestController
 public class CommonController {
 
-	@RequestMapping(value="/shop_charge_limit",produces="application/json;charset=UTF-8")
-	public ResultBean shop_charge_limit() {
+	@Autowired
+	private SellerRepository sellerRepository;
+
+	@Autowired
+	private ShopChargeLimitRepository shopChargeLimitRepository;
+	
+	@Autowired
+	private ShopCategoryRepository shopCategoryRepository;
+
+	@RequestMapping(value = "/shop_charge_limit", produces = "application/json;charset=UTF-8")
+	public ResultBean shop_charge_limit(@RequestHeader("shop_id") int shopId) {
 		ResultBean result = new ResultBean();
-		ShopChargeLimit bean = new ShopChargeLimit();
-		result.setCode(0);
-		result.setData(bean);
-
-		return result;
-	}
-
-	@RequestMapping("/shops")
-	public ResultBean shops() {
-		ResultBean result = new ResultBean();
-		Shop bean = new Shop();
-
+		ShopChargeLimit bean = shopChargeLimitRepository.findByShopId(shopId);
 		result.setCode(0);
 		result.setData(bean);
 
@@ -62,7 +66,7 @@ public class CommonController {
 		return result;
 	}
 
-	@RequestMapping(value="/count",produces="application/json;charset=UTF-8")
+	@RequestMapping(value = "/count", produces = "application/json;charset=UTF-8")
 	public ResultBean count(String count_type) {
 		ResultBean result = new ResultBean();
 		TodayCountBean bean = new TodayCountBean();
@@ -73,7 +77,7 @@ public class CommonController {
 		return result;
 	}
 
-	@RequestMapping(value="/count/order",produces="application/json;charset=UTF-8")
+	@RequestMapping(value = "/count/order", produces = "application/json;charset=UTF-8")
 	public ResultBean countOrder() {
 		ResultBean result = new ResultBean();
 		List<OrderCountBean> beanList = new ArrayList<OrderCountBean>();
@@ -84,7 +88,7 @@ public class CommonController {
 		return result;
 	}
 
-	@RequestMapping(value="/orders",produces="application/json;charset=UTF-8")
+	@RequestMapping(value = "/orders", produces = "application/json;charset=UTF-8")
 	public ResultBean orders() {
 		ResultBean result = new ResultBean();
 		List<OrderBean> beanList = new ArrayList<OrderBean>();
@@ -103,6 +107,18 @@ public class CommonController {
 		result.setCode(0);
 		result.setData(bean);
 
+		return result;
+	}
+	
+	/**
+	 * 店铺分类
+	 */
+	@RequestMapping(value = "/shop_parent_categories/0", method = RequestMethod.GET)
+	public ResultBean getShopCategories() {
+		ResultBean result = new ResultBean();
+		List<ShopCategory> beanList = shopCategoryRepository.findAll();
+		result.setCode(0);
+		result.setData(beanList);
 		return result;
 	}
 

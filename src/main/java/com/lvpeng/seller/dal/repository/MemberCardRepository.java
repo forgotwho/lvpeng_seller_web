@@ -6,4 +6,5 @@ import com.lvpeng.seller.dal.model.MemberCard;
 
 public interface MemberCardRepository extends MongoRepository<MemberCard, String> {
 
+	public MemberCard findByShopId(int shopId);
 }

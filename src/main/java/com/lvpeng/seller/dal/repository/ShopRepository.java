@@ -6,4 +6,5 @@ import com.lvpeng.seller.dal.model.Shop;
 
 public interface ShopRepository extends MongoRepository<Shop, String> {
 
+	public Shop findById(int id);
 }

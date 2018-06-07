@@ -6,4 +6,5 @@ import com.lvpeng.seller.dal.model.ShopChargeLimit;
 
 public interface ShopChargeLimitRepository extends MongoRepository<ShopChargeLimit, String> {
 
+	public ShopChargeLimit findByShopId(int shopId);
 }

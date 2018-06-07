@@ -10,8 +10,10 @@ import com.lvpeng.seller.common.ResultBean;
 import com.lvpeng.seller.dal.model.Seller;
 import com.lvpeng.seller.dal.model.SellerShop;
 import com.lvpeng.seller.dal.model.Shop;
+import com.lvpeng.seller.dal.model.ShopChargeLimit;
 import com.lvpeng.seller.dal.repository.SellerRepository;
 import com.lvpeng.seller.dal.repository.SellerShopRepository;
+import com.lvpeng.seller.dal.repository.ShopChargeLimitRepository;
 import com.lvpeng.seller.dal.repository.ShopRepository;
 
 @RestController
@@ -26,6 +28,9 @@ public class InitController {
 
 	@Autowired
 	private ShopRepository shopRepository;
+	
+	@Autowired
+	private ShopChargeLimitRepository shopChargeLimitRepository;
 
 	/**
 	 * 初始化数据
@@ -33,6 +38,11 @@ public class InitController {
 	@RequestMapping("/init")
 	public ResultBean init() {
 		ResultBean result = new ResultBean();
+		
+		sellerRepository.deleteAll();
+		sellerShopRepository.deleteAll();
+		shopRepository.deleteAll();
+		shopChargeLimitRepository.deleteAll();
 
 		Seller seller = new Seller();
 		seller.setId(1);
@@ -41,7 +51,7 @@ public class InitController {
 		seller.setPhone("13816638520");
 		seller.setStatus("01");
 
-		seller = sellerRepository.insert(seller);
+		seller = sellerRepository.save(seller);
 
 		Shop shop = new Shop();
 		shop.setId(1);
@@ -73,6 +83,16 @@ public class InitController {
 		sellerShop.setShopName("十堰饭来张口");
 		sellerShop.setAvatar("http://ostb6zm4z.bkt.clouddn.com/SMGZJ.png");
 		sellerShop.setCreateTime(new Date());
+		
+		ShopChargeLimit shopChargeLimit = new ShopChargeLimit();
+		shopChargeLimit.setCouponLimit(10);
+		shopChargeLimit.setCreateTime(new Date());
+		shopChargeLimit.setMemberLimit(20);
+		shopChargeLimit.setMpLimit(30);
+		shopChargeLimit.setOrderLimit(40);
+		shopChargeLimit.setShopId(shop.getId());
+		shopChargeLimit.setSmsLimit(50);
+		shopChargeLimitRepository.save(shopChargeLimit);
 
 		sellerShopRepository.save(sellerShop);
 
@@ -107,6 +127,16 @@ public class InitController {
 		sellerShop.setAvatar("http://img.leshare.shop/seller/shulanriyongpin.png");
 		sellerShop.setCreateTime(new Date());
 		sellerShopRepository.save(sellerShop);
+		
+		shopChargeLimit = new ShopChargeLimit();
+		shopChargeLimit.setCouponLimit(10);
+		shopChargeLimit.setCreateTime(new Date());
+		shopChargeLimit.setMemberLimit(20);
+		shopChargeLimit.setMpLimit(30);
+		shopChargeLimit.setOrderLimit(40);
+		shopChargeLimit.setShopId(shop.getId());
+		shopChargeLimit.setSmsLimit(50);
+		shopChargeLimitRepository.save(shopChargeLimit);
 
 		result.setCode(0);
 

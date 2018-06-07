@@ -15,17 +15,17 @@ import org.springframework.data.annotation.Id;
 public class Notice {
 
 	@Id
-    private int id;
+    private String id;
     private int shopId;
     private String content;
     private int isShow;
     private int isHome;
     private Date createTime;
     private Date updateTime;
-    public void setId(int id) {
+    public void setId(String id) {
          this.id = id;
      }
-     public int getId() {
+     public String getId() {
          return id;
      }
 
