@@ -12,6 +12,9 @@ package com.lvpeng.seller.common;
 public class ResultBean {
 
 	private int code;
+
+	private String message;
+
 	private Object data;
 
 	public int getCode() {
@@ -20,6 +23,14 @@ public class ResultBean {
 
 	public void setCode(int code) {
 		this.code = code;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	public Object getData() {

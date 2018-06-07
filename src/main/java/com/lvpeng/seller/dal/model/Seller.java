@@ -3,6 +3,8 @@
   */
 package com.lvpeng.seller.dal.model;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 
 /**
@@ -14,7 +16,7 @@ import org.springframework.data.annotation.Id;
 public class Seller {
 
 	@Id
-	public String id;
+	public int id;
 
 	private String phone;
 
@@ -24,17 +26,19 @@ public class Seller {
 
 	private String status;
 
-	private Long createTime;
+	private Date createTime;
 
-	private Long updateTime;
+	private Date expireTime;
 
-	private Long lastLoginTime;
+	private Date updateTime;
 
-	public String getId() {
+	private Date lastLoginTime;
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -70,27 +74,35 @@ public class Seller {
 		this.status = status;
 	}
 
-	public Long getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(Long createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 
-	public Long getUpdateTime() {
+	public Date getExpireTime() {
+		return expireTime;
+	}
+
+	public void setExpireTime(Date expireTime) {
+		this.expireTime = expireTime;
+	}
+
+	public Date getUpdateTime() {
 		return updateTime;
 	}
 
-	public void setUpdateTime(Long updateTime) {
+	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 
-	public Long getLastLoginTime() {
+	public Date getLastLoginTime() {
 		return lastLoginTime;
 	}
 
-	public void setLastLoginTime(Long lastLoginTime) {
+	public void setLastLoginTime(Date lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
 	}
 
