@@ -4,6 +4,7 @@
 package com.lvpeng.seller.dal.model;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
@@ -39,6 +40,9 @@ public class MemberCard {
 	private String servicePhone;
 	private Date createTime;
 	private Date updateTime;
+	private BonusRule bonusRule;
+	private List<DiscountRule> discountRules;
+	private List<MemberPresentRule> memberPresentRules;
 
 	public void setId(int id) {
 		this.id = id;
@@ -222,6 +226,30 @@ public class MemberCard {
 
 	public Date getUpdateTime() {
 		return updateTime;
+	}
+
+	public void setBonusRule(BonusRule bonusRule) {
+		this.bonusRule = bonusRule;
+	}
+
+	public BonusRule getBonusRule() {
+		return bonusRule;
+	}
+
+	public void setDiscountRules(List<DiscountRule> discountRules) {
+		this.discountRules = discountRules;
+	}
+
+	public List<DiscountRule> getDiscountRules() {
+		return discountRules;
+	}
+
+	public void setMemberPresentRules(List<MemberPresentRule> memberPresentRules) {
+		this.memberPresentRules = memberPresentRules;
+	}
+
+	public List<MemberPresentRule> getMemberPresentRules() {
+		return memberPresentRules;
 	}
 
 }

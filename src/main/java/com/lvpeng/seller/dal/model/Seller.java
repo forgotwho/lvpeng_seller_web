@@ -18,6 +18,8 @@ public class Seller {
 	@Id
 	public int id;
 
+	private String name;
+	
 	private String phone;
 
 	private String appCode;
@@ -40,6 +42,14 @@ public class Seller {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getPhone() {

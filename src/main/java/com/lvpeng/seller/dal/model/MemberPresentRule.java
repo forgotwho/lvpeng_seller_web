@@ -4,6 +4,7 @@
 package com.lvpeng.seller.dal.model;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
@@ -24,6 +25,8 @@ public class MemberPresentRule {
 	private int shopId;
 	private String unit;
 	private Date createTime;
+	private List<CategoryRule> categoryList;
+	private List<GoodsRule> goodsList;
 
 	public void setId(int id) {
 		this.id = id;
@@ -87,6 +90,22 @@ public class MemberPresentRule {
 
 	public Date getCreateTime() {
 		return createTime;
+	}
+
+	public void setCategoryList(List<CategoryRule> categoryList) {
+		this.categoryList = categoryList;
+	}
+
+	public List<CategoryRule> getCategoryList() {
+		return categoryList;
+	}
+
+	public void setGoodsList(List<GoodsRule> goodsList) {
+		this.goodsList = goodsList;
+	}
+
+	public List<GoodsRule> getGoodsList() {
+		return goodsList;
 	}
 
 }

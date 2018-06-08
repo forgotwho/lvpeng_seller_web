@@ -29,7 +29,14 @@ public class NoticeController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ResultBean page(@RequestHeader("shop_id") int shopId, String from, String limit, String status) {
 		ResultBean result = new ResultBean();
-		List<Notice> beanList = noticeRepository.findByShopId(shopId);
+		List<Notice> beanList = null;
+		if("SHOW".equals(status)){
+			beanList = noticeRepository.findByShopIdAndIsShow(shopId, 1);
+		}else if("HIDE".equals(status)){
+			beanList = noticeRepository.findByShopIdAndIsShow(shopId, 2);
+		}else{
+			beanList = noticeRepository.findByShopId(shopId);
+		}
 		result.setCode(0);
 		result.setData(beanList);
 		return result;
@@ -78,7 +85,7 @@ public class NoticeController {
 	public ResultBean update(@PathVariable String noticeId, @RequestBody Notice data) {
 		ResultBean result = new ResultBean();
 		Notice bean = noticeRepository.findById(noticeId).get();
-		BeanUtils.copyProperties(data, bean,new String[]{"id","createTime","shopId"});
+		BeanUtils.copyProperties(data, bean, new String[] { "id", "createTime", "shopId" });
 		bean.setUpdateTime(new Date());
 		noticeRepository.save(bean);
 		result.setCode(0);

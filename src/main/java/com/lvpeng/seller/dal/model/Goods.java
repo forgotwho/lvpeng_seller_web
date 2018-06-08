@@ -39,6 +39,7 @@ public class Goods {
 	private String subhead;
 	private String type;
 	private String serviceParam;
+	private List<GoodsStock> goodsStocks;
 	private int salesVolume;
 	private int favoriteCount;
 	private int totalStock;
@@ -221,6 +222,14 @@ public class Goods {
 
 	public String getServiceParam() {
 		return serviceParam;
+	}
+
+	public void setGoodsStocks(List<GoodsStock> goodsStocks) {
+		this.goodsStocks = goodsStocks;
+	}
+
+	public List<GoodsStock> getGoodsStocks() {
+		return goodsStocks;
 	}
 
 	public void setSalesVolume(int salesVolume) {

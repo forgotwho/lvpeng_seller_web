@@ -1,24 +1,35 @@
 package com.lvpeng.seller.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lvpeng.seller.bean.CouponBean;
 import com.lvpeng.seller.common.ResultBean;
+import com.lvpeng.seller.dal.model.Order;
+import com.lvpeng.seller.dal.repository.OrderRepository;
 
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
 
+	@Autowired
+	private OrderRepository orderRepository;
+
 	/**
 	 * 分页方法
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public ResultBean page(int from, int limit) {
+	public ResultBean page(@RequestHeader("shop_id") int shopId, String from, String limit) {
 		ResultBean result = new ResultBean();
+		List<Order> beanList = orderRepository.findAll();
 		result.setCode(0);
+		result.setData(beanList);
 		return result;
 	}
 
@@ -28,7 +39,9 @@ public class OrderController {
 	@RequestMapping(value = "/{orderId}", method = RequestMethod.GET)
 	public ResultBean info(@PathVariable String orderId) {
 		ResultBean result = new ResultBean();
+		Order order = orderRepository.findById(orderId).get();
 		result.setCode(0);
+		result.setData(order);
 		return result;
 	}
 
@@ -38,6 +51,9 @@ public class OrderController {
 	@RequestMapping(value = "/{orderId}/send", method = RequestMethod.PUT)
 	public ResultBean send(@PathVariable String orderId) {
 		ResultBean result = new ResultBean();
+		Order order = orderRepository.findById(orderId).get();
+		order.setStatus(1);
+		orderRepository.save(order);
 		result.setCode(0);
 		return result;
 	}
@@ -48,6 +64,9 @@ public class OrderController {
 	@RequestMapping(value = "/{orderId}/note", method = RequestMethod.PUT)
 	public ResultBean note(@PathVariable String orderId, String sellerNote) {
 		ResultBean result = new ResultBean();
+		Order order = orderRepository.findById(orderId).get();
+		order.setSellerNote(sellerNote);
+		orderRepository.save(order);
 		result.setCode(0);
 		return result;
 	}
@@ -68,6 +87,10 @@ public class OrderController {
 	@RequestMapping(value = "/{orderId}/status/close", method = RequestMethod.PUT)
 	public ResultBean close(@PathVariable String orderId, String note) {
 		ResultBean result = new ResultBean();
+		Order order = orderRepository.findById(orderId).get();
+		order.setStatus(2);
+		order.setMessage(note);
+		orderRepository.save(order);
 		result.setCode(0);
 		return result;
 	}
@@ -78,6 +101,9 @@ public class OrderController {
 	@RequestMapping(value = "/{orderId}/status/comments", method = RequestMethod.PUT)
 	public ResultBean confirmOrder(@PathVariable String orderId) {
 		ResultBean result = new ResultBean();
+		Order order = orderRepository.findById(orderId).get();
+		order.setStatus(3);
+		orderRepository.save(order);
 		result.setCode(0);
 		return result;
 	}
@@ -88,6 +114,9 @@ public class OrderController {
 	@RequestMapping(value = "/{orderId}/take_food_order", method = RequestMethod.PUT)
 	public ResultBean take(@PathVariable String orderId) {
 		ResultBean result = new ResultBean();
+		Order order = orderRepository.findById(orderId).get();
+		order.setStatus(4);
+		orderRepository.save(order);
 		result.setCode(0);
 		return result;
 	}
@@ -98,6 +127,9 @@ public class OrderController {
 	@RequestMapping(value = "/{orderId}/modify_money", method = RequestMethod.PUT)
 	public ResultBean reprice(@PathVariable String orderId, String param) {
 		ResultBean result = new ResultBean();
+		Order order = orderRepository.findById(orderId).get();
+		order.setStatus(5);
+		orderRepository.save(order);
 		result.setCode(0);
 		return result;
 	}
@@ -111,6 +143,9 @@ public class OrderController {
 	@RequestMapping(value = "/{orderId}/refund_money", method = RequestMethod.PUT)
 	public ResultBean agreeRefund(@PathVariable String orderId, String isAgree, String disagreeCause) {
 		ResultBean result = new ResultBean();
+		Order order = orderRepository.findById(orderId).get();
+		order.setStatus(6);
+		orderRepository.save(order);
 		result.setCode(0);
 		return result;
 	}
@@ -119,8 +154,9 @@ public class OrderController {
 	 * 创建订单
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public ResultBean createOrder(CouponBean data) {
+	public ResultBean createOrder(@RequestHeader("shop_id") int shopId, @RequestBody Order data) {
 		ResultBean result = new ResultBean();
+		orderRepository.save(data);
 		result.setCode(0);
 		return result;
 	}

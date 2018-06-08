@@ -4,6 +4,7 @@
 package com.lvpeng.seller.dal.model;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
@@ -23,6 +24,9 @@ public class DiscountRule {
 	private int discount;
 	private int upgradeFee;
 	private Date createTime;
+	private List<DiscountCategory> discountCategoryLists;
+	private List<DiscountGoods> discountGoodsLists;
+	
 	public String getId() {
 		return id;
 	}
@@ -76,6 +80,22 @@ public class DiscountRule {
 
 	public Date getCreateTime() {
 		return createTime;
+	}
+
+	public void setDiscountCategoryLists(List<DiscountCategory> discountCategoryLists) {
+		this.discountCategoryLists = discountCategoryLists;
+	}
+
+	public List<DiscountCategory> getDiscountCategoryLists() {
+		return discountCategoryLists;
+	}
+
+	public void setDiscountGoodsLists(List<DiscountGoods> discountGoodsLists) {
+		this.discountGoodsLists = discountGoodsLists;
+	}
+
+	public List<DiscountGoods> getDiscountGoodsLists() {
+		return discountGoodsLists;
 	}
 
 }

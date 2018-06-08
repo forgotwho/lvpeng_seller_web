@@ -3,6 +3,7 @@
   */
 package com.lvpeng.seller.dal.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class Shop {
 	private int inShop;
 	private int supportMember;
 	private int isDelete;
-	private List<String> images;
+	private List<Image> images = new ArrayList<>();
 
 	public void setId(int id) {
 		this.id = id;
@@ -199,11 +200,11 @@ public class Shop {
 		return isDelete;
 	}
 
-	public void setImages(List<String> images) {
+	public void setImages(List<Image> images) {
 		this.images = images;
 	}
 
-	public List<String> getImages() {
+	public List<Image> getImages() {
 		return images;
 	}
 

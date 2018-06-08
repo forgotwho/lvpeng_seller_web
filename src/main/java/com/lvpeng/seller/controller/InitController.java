@@ -28,7 +28,7 @@ public class InitController {
 
 	@Autowired
 	private ShopRepository shopRepository;
-	
+
 	@Autowired
 	private ShopChargeLimitRepository shopChargeLimitRepository;
 
@@ -38,7 +38,7 @@ public class InitController {
 	@RequestMapping("/init")
 	public ResultBean init() {
 		ResultBean result = new ResultBean();
-		
+
 		sellerRepository.deleteAll();
 		sellerShopRepository.deleteAll();
 		shopRepository.deleteAll();
@@ -46,97 +46,110 @@ public class InitController {
 
 		Seller seller = new Seller();
 		seller.setId(1);
+		seller.setName("吕鹏");
+		seller.setPhone("13800138000");
 		seller.setAppCode("XXX");
-		seller.setCreateTime(new Date());
-		seller.setPhone("13816638520");
 		seller.setStatus("01");
+		seller.setCreateTime(new Date());
 
 		seller = sellerRepository.save(seller);
 
 		Shop shop = new Shop();
 		shop.setId(1);
-		shop.setAddress("十堰");
-		shop.setAutoOrder(0);
-		shop.setAvatar("http://ostb6zm4z.bkt.clouddn.com/SMGZJ.png");
-		shop.setCategoryId(1);
-		shop.setCategoryName("餐饮");
-		shop.setCreateTime(new Date());
-		shop.setDescribe("");
-		shop.setDetailAddress("");
-		shop.setExpiredTime("2019-06-08 00:00:00");
-		shop.setImages(null);
-		shop.setInShop(0);
-		shop.setIsDelete(0);
-		shop.setLatitude("0");
-		shop.setLeArea(0);
-		shop.setLongitude("");
 		shop.setName("十堰饭来张口");
-		shop.setOffPay(0);
-		shop.setPhone("13816638520");
-		shop.setSupportMember(0);
+		shop.setAvatar("http://ostb6zm4z.bkt.clouddn.com/SMGZJ.png");
+		shop.setExpiredTime("2019-06-08 00:00:00");
+		shop.setCreateTime(new Date());
 		shop = shopRepository.save(shop);
 
 		SellerShop sellerShop = new SellerShop();
-		sellerShop.setSeller("吕鹏");
+		sellerShop.setSeller(seller.getName());
 		sellerShop.setSellerId(seller.getId());
 		sellerShop.setShopId(shop.getId());
-		sellerShop.setShopName("十堰饭来张口");
-		sellerShop.setAvatar("http://ostb6zm4z.bkt.clouddn.com/SMGZJ.png");
+		sellerShop.setShopName(shop.getName());
+		sellerShop.setAvatar(shop.getAvatar());
+		sellerShop.setExpiredTime(shop.getExpiredTime());
 		sellerShop.setCreateTime(new Date());
-		
-		ShopChargeLimit shopChargeLimit = new ShopChargeLimit();
-		shopChargeLimit.setCouponLimit(10);
-		shopChargeLimit.setCreateTime(new Date());
-		shopChargeLimit.setMemberLimit(20);
-		shopChargeLimit.setMpLimit(30);
-		shopChargeLimit.setOrderLimit(40);
-		shopChargeLimit.setShopId(shop.getId());
-		shopChargeLimit.setSmsLimit(50);
-		shopChargeLimitRepository.save(shopChargeLimit);
 
-		sellerShopRepository.save(sellerShop);
+		sellerShop = sellerShopRepository.save(sellerShop);
+
+		ShopChargeLimit shopChargeLimit = new ShopChargeLimit();
+		shopChargeLimit.setShopId(shop.getId());
+		shopChargeLimit.setCouponLimit(100);
+		shopChargeLimit.setMemberLimit(100);
+		shopChargeLimit.setMpLimit(100);
+		shopChargeLimit.setOrderLimit(100);
+		shopChargeLimit.setSmsLimit(100);
+		shopChargeLimit.setCreateTime(new Date());
+		shopChargeLimit = shopChargeLimitRepository.save(shopChargeLimit);
+
+		seller = new Seller();
+		seller.setId(2);
+		seller.setName("Risingsun");
+		seller.setPhone("13800138001");
+		seller.setAppCode("XXX");
+		seller.setStatus("01");
+		seller.setCreateTime(new Date());
+
+		seller = sellerRepository.save(seller);
 
 		shop = new Shop();
 		shop.setId(2);
-		shop.setAddress("南化");
-		shop.setAutoOrder(0);
-		shop.setAvatar("http://img.leshare.shop/seller/shulanriyongpin.png");
-		shop.setCategoryId(1);
-		shop.setCategoryName("餐饮");
-		shop.setCreateTime(new Date());
-		shop.setDescribe("");
-		shop.setDetailAddress("");
-		shop.setExpiredTime("2019-06-08 00:00:00");
-		shop.setImages(null);
-		shop.setInShop(0);
-		shop.setIsDelete(0);
-		shop.setLatitude("0");
-		shop.setLeArea(0);
-		shop.setLongitude("");
 		shop.setName("南化饭来张口");
-		shop.setOffPay(0);
-		shop.setPhone("13816638520");
-		shop.setSupportMember(0);
+		shop.setAvatar("http://img.leshare.shop/seller/shulanriyongpin.png");
+		shop.setExpiredTime("2019-06-08 00:00:00");
+		shop.setCreateTime(new Date());
 		shop = shopRepository.save(shop);
 
 		sellerShop = new SellerShop();
-		sellerShop.setSeller("吕鹏");
+		sellerShop.setSeller(seller.getName());
 		sellerShop.setSellerId(seller.getId());
 		sellerShop.setShopId(shop.getId());
-		sellerShop.setShopName("南化饭来张口");
-		sellerShop.setAvatar("http://img.leshare.shop/seller/shulanriyongpin.png");
+		sellerShop.setShopName(shop.getName());
+		sellerShop.setAvatar(shop.getAvatar());
+		sellerShop.setExpiredTime(shop.getExpiredTime());
 		sellerShop.setCreateTime(new Date());
-		sellerShopRepository.save(sellerShop);
-		
+
+		sellerShop = sellerShopRepository.save(sellerShop);
+
 		shopChargeLimit = new ShopChargeLimit();
-		shopChargeLimit.setCouponLimit(10);
-		shopChargeLimit.setCreateTime(new Date());
-		shopChargeLimit.setMemberLimit(20);
-		shopChargeLimit.setMpLimit(30);
-		shopChargeLimit.setOrderLimit(40);
 		shopChargeLimit.setShopId(shop.getId());
-		shopChargeLimit.setSmsLimit(50);
-		shopChargeLimitRepository.save(shopChargeLimit);
+		shopChargeLimit.setCouponLimit(100);
+		shopChargeLimit.setMemberLimit(100);
+		shopChargeLimit.setMpLimit(100);
+		shopChargeLimit.setOrderLimit(100);
+		shopChargeLimit.setSmsLimit(100);
+		shopChargeLimit.setCreateTime(new Date());
+		shopChargeLimit = shopChargeLimitRepository.save(shopChargeLimit);
+
+		shop = new Shop();
+		shop.setId(3);
+		shop.setName("上海饭来张口");
+		shop.setAvatar("http://img.leshare.shop/seller/shulanriyongpin.png");
+		shop.setExpiredTime("2019-06-08 00:00:00");
+		shop.setCreateTime(new Date());
+		shop = shopRepository.save(shop);
+
+		sellerShop = new SellerShop();
+		sellerShop.setSeller(seller.getName());
+		sellerShop.setSellerId(seller.getId());
+		sellerShop.setShopId(shop.getId());
+		sellerShop.setShopName(shop.getName());
+		sellerShop.setAvatar(shop.getAvatar());
+		sellerShop.setExpiredTime(shop.getExpiredTime());
+		sellerShop.setCreateTime(new Date());
+
+		sellerShop = sellerShopRepository.save(sellerShop);
+
+		shopChargeLimit = new ShopChargeLimit();
+		shopChargeLimit.setShopId(shop.getId());
+		shopChargeLimit.setCouponLimit(100);
+		shopChargeLimit.setMemberLimit(100);
+		shopChargeLimit.setMpLimit(100);
+		shopChargeLimit.setOrderLimit(100);
+		shopChargeLimit.setSmsLimit(100);
+		shopChargeLimit.setCreateTime(new Date());
+		shopChargeLimit = shopChargeLimitRepository.save(shopChargeLimit);
 
 		result.setCode(0);
 

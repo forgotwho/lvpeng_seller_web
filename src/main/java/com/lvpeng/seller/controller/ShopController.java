@@ -1,7 +1,5 @@
 package com.lvpeng.seller.controller;
 
-import java.util.Calendar;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +13,7 @@ import com.lvpeng.seller.dal.model.Shop;
 import com.lvpeng.seller.dal.model.ShopStatus;
 import com.lvpeng.seller.dal.repository.ShopRepository;
 import com.lvpeng.seller.dal.repository.ShopStatusRepository;
+import com.lvpeng.seller.util.DateUtils;
 
 @RestController
 @RequestMapping("/shops")
@@ -42,7 +41,18 @@ public class ShopController {
 	 * 更新店铺信息
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public ResultBean create(Shop data) {
+	public ResultBean create(@RequestBody Shop data) {
+		ResultBean result = new ResultBean();
+		shopRepository.save(data);
+		result.setCode(0);
+		return result;
+	}
+	
+	/**
+	 * 更新店铺信息
+	 */
+	@RequestMapping(method = RequestMethod.PUT)
+	public ResultBean update(@RequestBody Shop data) {
 		ResultBean result = new ResultBean();
 		shopRepository.save(data);
 		result.setCode(0);
@@ -61,7 +71,7 @@ public class ShopController {
 			bean = new ShopStatus();
 			bean.setShopId(shopId);
 			bean.setOpen(true);
-			bean.setStatus("CLOSE");
+			bean.setStatus("NORMAL");
 			bean.setBeginTime("00:00");
 			bean.setEndTime("23:59");
 			bean = shopStatusRepository.save(bean);
@@ -78,9 +88,12 @@ public class ShopController {
 		ResultBean result = new ResultBean();
 		ShopStatus bean = shopStatusRepository.findByShopId(shopId);
 		BeanUtils.copyProperties(data, bean, new String[] { "id", "shopId", "open" });
-		Calendar calendar = Calendar.getInstance();
-		int hour = calendar.get(Calendar.HOUR_OF_DAY);
-		int minute = calendar.get(Calendar.MINUTE);
+		String openTime = DateUtils.openTime();
+		if (openTime.compareTo(bean.getBeginTime()) >= 1 && openTime.compareTo(bean.getEndTime()) <=-1) {
+			bean.setOpen(true);
+		} else {
+			bean.setOpen(false);
+		}
 		shopStatusRepository.save(bean);
 		result.setCode(0);
 		return result;

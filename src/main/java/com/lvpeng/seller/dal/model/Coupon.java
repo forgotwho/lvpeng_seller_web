@@ -18,229 +18,212 @@ public class Coupon {
 
 	@Id
 	private int id;
-	private String name;
-	private String type;
-	private int price;
-	private int limitPrice;
-	private int shopId;
-	private Date beginTime;
-	private Date dueTime;
-	private int stock;
-	private int perLimit;
-	private int suitLimit;
-	private Date createTime;
-	private int isCampaign;
-	private String campaignImg;
-	private int campaignScene;
-	private int isPlatform;
-	private int supportType;
-	private int isSelfUse;
-	private int isPresent;
-	private int presentFee;
-	private int isShow;
-	private int isShowHome;
-	private String desc;
-	private List<String> goodsIdList;
-	private boolean sendNow;
+    private String name;
+    private String type;
+    private int price;
+    private int limitPrice;
+    private int shopId;
+    private Date beginTime;
+    private Date dueTime;
+    private int stock;
+    private int perLimit;
+    private int suitLimit;
+    private Date createTime;
+    private int isCampaign;
+    private String campaignImg;
+    private int campaignScene;
+    private int isPlatform;
+    private int supportType;
+    private int isSelfUse;
+    private int isPresent;
+    private int presentFee;
+    private int isShow;
+    private int isShowHome;
+    private String desc;
+    private List<String> goodsIdList;
+    private CouponCustomerCount couponCustomerCount;
+    private boolean sendNow;
+    public void setId(int id) {
+         this.id = id;
+     }
+     public int getId() {
+         return id;
+     }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setName(String name) {
+         this.name = name;
+     }
+     public String getName() {
+         return name;
+     }
 
-	public int getId() {
-		return id;
-	}
+    public void setType(String type) {
+         this.type = type;
+     }
+     public String getType() {
+         return type;
+     }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setPrice(int price) {
+         this.price = price;
+     }
+     public int getPrice() {
+         return price;
+     }
 
-	public String getName() {
-		return name;
-	}
+    public void setLimitPrice(int limitPrice) {
+         this.limitPrice = limitPrice;
+     }
+     public int getLimitPrice() {
+         return limitPrice;
+     }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public void setShopId(int shopId) {
+         this.shopId = shopId;
+     }
+     public int getShopId() {
+         return shopId;
+     }
 
-	public String getType() {
-		return type;
-	}
+    public void setBeginTime(Date beginTime) {
+         this.beginTime = beginTime;
+     }
+     public Date getBeginTime() {
+         return beginTime;
+     }
 
-	public void setPrice(int price) {
-		this.price = price;
-	}
+    public void setDueTime(Date dueTime) {
+         this.dueTime = dueTime;
+     }
+     public Date getDueTime() {
+         return dueTime;
+     }
 
-	public int getPrice() {
-		return price;
-	}
+    public void setStock(int stock) {
+         this.stock = stock;
+     }
+     public int getStock() {
+         return stock;
+     }
 
-	public void setLimitPrice(int limitPrice) {
-		this.limitPrice = limitPrice;
-	}
+    public void setPerLimit(int perLimit) {
+         this.perLimit = perLimit;
+     }
+     public int getPerLimit() {
+         return perLimit;
+     }
 
-	public int getLimitPrice() {
-		return limitPrice;
-	}
+    public void setSuitLimit(int suitLimit) {
+         this.suitLimit = suitLimit;
+     }
+     public int getSuitLimit() {
+         return suitLimit;
+     }
 
-	public void setShopId(int shopId) {
-		this.shopId = shopId;
-	}
+    public void setCreateTime(Date createTime) {
+         this.createTime = createTime;
+     }
+     public Date getCreateTime() {
+         return createTime;
+     }
 
-	public int getShopId() {
-		return shopId;
-	}
+    public void setIsCampaign(int isCampaign) {
+         this.isCampaign = isCampaign;
+     }
+     public int getIsCampaign() {
+         return isCampaign;
+     }
 
-	public void setBeginTime(Date beginTime) {
-		this.beginTime = beginTime;
-	}
+    public void setCampaignImg(String campaignImg) {
+         this.campaignImg = campaignImg;
+     }
+     public String getCampaignImg() {
+         return campaignImg;
+     }
 
-	public Date getBeginTime() {
-		return beginTime;
-	}
+    public void setCampaignScene(int campaignScene) {
+         this.campaignScene = campaignScene;
+     }
+     public int getCampaignScene() {
+         return campaignScene;
+     }
 
-	public void setDueTime(Date dueTime) {
-		this.dueTime = dueTime;
-	}
+    public void setIsPlatform(int isPlatform) {
+         this.isPlatform = isPlatform;
+     }
+     public int getIsPlatform() {
+         return isPlatform;
+     }
 
-	public Date getDueTime() {
-		return dueTime;
-	}
+    public void setSupportType(int supportType) {
+         this.supportType = supportType;
+     }
+     public int getSupportType() {
+         return supportType;
+     }
 
-	public void setStock(int stock) {
-		this.stock = stock;
-	}
+    public void setIsSelfUse(int isSelfUse) {
+         this.isSelfUse = isSelfUse;
+     }
+     public int getIsSelfUse() {
+         return isSelfUse;
+     }
 
-	public int getStock() {
-		return stock;
-	}
+    public void setIsPresent(int isPresent) {
+         this.isPresent = isPresent;
+     }
+     public int getIsPresent() {
+         return isPresent;
+     }
 
-	public void setPerLimit(int perLimit) {
-		this.perLimit = perLimit;
-	}
+    public void setPresentFee(int presentFee) {
+         this.presentFee = presentFee;
+     }
+     public int getPresentFee() {
+         return presentFee;
+     }
 
-	public int getPerLimit() {
-		return perLimit;
-	}
+    public void setIsShow(int isShow) {
+         this.isShow = isShow;
+     }
+     public int getIsShow() {
+         return isShow;
+     }
 
-	public void setSuitLimit(int suitLimit) {
-		this.suitLimit = suitLimit;
-	}
+    public void setIsShowHome(int isShowHome) {
+         this.isShowHome = isShowHome;
+     }
+     public int getIsShowHome() {
+         return isShowHome;
+     }
 
-	public int getSuitLimit() {
-		return suitLimit;
-	}
+    public void setDesc(String desc) {
+         this.desc = desc;
+     }
+     public String getDesc() {
+         return desc;
+     }
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+    public void setGoodsIdList(List<String> goodsIdList) {
+         this.goodsIdList = goodsIdList;
+     }
+     public List<String> getGoodsIdList() {
+         return goodsIdList;
+     }
 
-	public Date getCreateTime() {
-		return createTime;
-	}
+    public void setCouponCustomerCount(CouponCustomerCount couponCustomerCount) {
+         this.couponCustomerCount = couponCustomerCount;
+     }
+     public CouponCustomerCount getCouponCustomerCount() {
+         return couponCustomerCount;
+     }
 
-	public void setIsCampaign(int isCampaign) {
-		this.isCampaign = isCampaign;
-	}
+    public void setSendNow(boolean sendNow) {
+         this.sendNow = sendNow;
+     }
+     public boolean getSendNow() {
+         return sendNow;
+     }
 
-	public int getIsCampaign() {
-		return isCampaign;
-	}
-
-	public void setCampaignImg(String campaignImg) {
-		this.campaignImg = campaignImg;
-	}
-
-	public String getCampaignImg() {
-		return campaignImg;
-	}
-
-	public void setCampaignScene(int campaignScene) {
-		this.campaignScene = campaignScene;
-	}
-
-	public int getCampaignScene() {
-		return campaignScene;
-	}
-
-	public void setIsPlatform(int isPlatform) {
-		this.isPlatform = isPlatform;
-	}
-
-	public int getIsPlatform() {
-		return isPlatform;
-	}
-
-	public void setSupportType(int supportType) {
-		this.supportType = supportType;
-	}
-
-	public int getSupportType() {
-		return supportType;
-	}
-
-	public void setIsSelfUse(int isSelfUse) {
-		this.isSelfUse = isSelfUse;
-	}
-
-	public int getIsSelfUse() {
-		return isSelfUse;
-	}
-
-	public void setIsPresent(int isPresent) {
-		this.isPresent = isPresent;
-	}
-
-	public int getIsPresent() {
-		return isPresent;
-	}
-
-	public void setPresentFee(int presentFee) {
-		this.presentFee = presentFee;
-	}
-
-	public int getPresentFee() {
-		return presentFee;
-	}
-
-	public void setIsShow(int isShow) {
-		this.isShow = isShow;
-	}
-
-	public int getIsShow() {
-		return isShow;
-	}
-
-	public void setIsShowHome(int isShowHome) {
-		this.isShowHome = isShowHome;
-	}
-
-	public int getIsShowHome() {
-		return isShowHome;
-	}
-
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-
-	public String getDesc() {
-		return desc;
-	}
-
-	public void setGoodsIdList(List<String> goodsIdList) {
-		this.goodsIdList = goodsIdList;
-	}
-
-	public List<String> getGoodsIdList() {
-		return goodsIdList;
-	}
-
-	public void setSendNow(boolean sendNow) {
-		this.sendNow = sendNow;
-	}
-
-	public boolean getSendNow() {
-		return sendNow;
-	}
 
 }

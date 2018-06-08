@@ -4,6 +4,7 @@
 package com.lvpeng.seller.dal.model;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
@@ -41,12 +42,8 @@ public class Member {
 	private String offlineCard;
 	private int customDiscount;
 	private DiscountRule discountRule;
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+	private List<MemberPresentDetail> memberPresentDetails;
+
 	public void setMemberId(int memberId) {
 		this.memberId = memberId;
 	}
@@ -237,6 +234,14 @@ public class Member {
 
 	public DiscountRule getDiscountRule() {
 		return discountRule;
+	}
+
+	public void setMemberPresentDetails(List<MemberPresentDetail> memberPresentDetails) {
+		this.memberPresentDetails = memberPresentDetails;
+	}
+
+	public List<MemberPresentDetail> getMemberPresentDetails() {
+		return memberPresentDetails;
 	}
 
 }

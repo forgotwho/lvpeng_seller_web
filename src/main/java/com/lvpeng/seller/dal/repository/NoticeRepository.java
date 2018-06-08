@@ -9,6 +9,8 @@ import com.lvpeng.seller.dal.model.Notice;
 public interface NoticeRepository extends MongoRepository<Notice, String> {
 
 	public List<Notice> findByShopId(int shopId);
+	
+	public List<Notice> findByShopIdAndIsShow(int shopId,int isShow);
 
 
 }

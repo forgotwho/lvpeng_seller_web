@@ -6,4 +6,5 @@ import com.lvpeng.seller.dal.model.Coupon;
 
 public interface CouponRepository extends MongoRepository<Coupon, String> {
 
+	public Coupon findById(int id);
 }

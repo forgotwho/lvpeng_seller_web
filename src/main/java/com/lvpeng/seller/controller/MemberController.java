@@ -1,17 +1,26 @@
 package com.lvpeng.seller.controller;
 
-import org.springframework.web.bind.annotation.PathVariable;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lvpeng.seller.bean.BonusDetailBean;
-import com.lvpeng.seller.bean.CouponBean;
 import com.lvpeng.seller.common.ResultBean;
+import com.lvpeng.seller.dal.model.Member;
+import com.lvpeng.seller.dal.repository.MemberRepository;
 
 @RestController
-@RequestMapping("/member")
+@RequestMapping("/members")
 public class MemberController {
+	
+	@Autowired
+	private MemberRepository memberRepository;
 
 	/**
 	 * 获取会员信息
@@ -49,7 +58,9 @@ public class MemberController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ResultBean customerInfo(String customer_id) {
 		ResultBean result = new ResultBean();
+		List<Member> beanList = memberRepository.findAll();
 		result.setCode(0);
+		result.setData(beanList);
 		return result;
 	}
 
@@ -72,13 +83,25 @@ public class MemberController {
 		result.setCode(0);
 		return result;
 	}
+	
+	@RequestMapping(value = "/list",method = RequestMethod.GET)
+	public ResultBean list(@RequestHeader("shop_id") int shopId,String from, String limit) {
+		ResultBean result = new ResultBean();
+		List<Member> beanList = memberRepository.findAll();
+		result.setCode(0);
+		result.setData(beanList);
+		return result;
+	}
 
 	/**
 	 * 卖家为用户开通会员卡
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public ResultBean registe() {
+	public ResultBean registe(@RequestHeader("shop_id") int shopId,@RequestBody Member data) {
 		ResultBean result = new ResultBean();
+		data.setShopId(shopId);
+		data.setAcceptTime(new Date());
+		memberRepository.save(data);
 		result.setCode(0);
 		return result;
 	}

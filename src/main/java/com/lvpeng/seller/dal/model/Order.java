@@ -62,12 +62,15 @@ public class Order {
 	private String onlinePayType;
 	private List<OrderGoodsInfo> orderGoodsInfos;
 	private List<String> orderRefunds;
+	private OrderExpress orderExpress;
 	private Customer customer;
 	private String orderCloseNote;
-	
+	private List<OrderPriceHistory> orderPriceHistory;
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -424,6 +427,14 @@ public class Order {
 		return orderRefunds;
 	}
 
+	public void setOrderExpress(OrderExpress orderExpress) {
+		this.orderExpress = orderExpress;
+	}
+
+	public OrderExpress getOrderExpress() {
+		return orderExpress;
+	}
+
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
@@ -438,6 +449,14 @@ public class Order {
 
 	public String getOrderCloseNote() {
 		return orderCloseNote;
+	}
+
+	public void setOrderPriceHistory(List<OrderPriceHistory> orderPriceHistory) {
+		this.orderPriceHistory = orderPriceHistory;
+	}
+
+	public List<OrderPriceHistory> getOrderPriceHistory() {
+		return orderPriceHistory;
 	}
 
 }
