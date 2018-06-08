@@ -3,6 +3,7 @@
   */
 package com.lvpeng.seller.dal.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -41,8 +42,8 @@ public class MemberCard {
 	private Date createTime;
 	private Date updateTime;
 	private BonusRule bonusRule;
-	private List<DiscountRule> discountRules;
-	private List<MemberPresentRule> memberPresentRules;
+	private List<DiscountRule> discountRules = new ArrayList<>();
+	private List<MemberPresentRule> memberPresentRules = new ArrayList<>();
 
 	public void setId(int id) {
 		this.id = id;

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +29,21 @@ public class MemberController {
 	@RequestMapping(value = "/number", method = RequestMethod.GET)
 	public ResultBean Info(String number) {
 		ResultBean result = new ResultBean();
+		Member bean = memberRepository.findAll().get(0);
 		result.setCode(0);
+		result.setData(bean);
+		return result;
+	}
+	
+	/**
+	 * 获取买家会员数据
+	 */
+	@RequestMapping(value = "/{customerId}/detail_info",method = RequestMethod.GET)
+	public ResultBean detail_info(@PathVariable String customer_id) {
+		ResultBean result = new ResultBean();
+		Member bean = memberRepository.findAll().get(0);
+		result.setCode(0);
+		result.setData(bean);
 		return result;
 	}
 

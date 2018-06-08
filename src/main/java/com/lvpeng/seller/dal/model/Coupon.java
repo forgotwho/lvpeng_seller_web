@@ -23,8 +23,8 @@ public class Coupon {
     private int price;
     private int limitPrice;
     private int shopId;
-    private Date beginTime;
-    private Date dueTime;
+    private String beginTime;
+    private String dueTime;
     private int stock;
     private int perLimit;
     private int suitLimit;
@@ -85,17 +85,17 @@ public class Coupon {
          return shopId;
      }
 
-    public void setBeginTime(Date beginTime) {
+    public void setBeginTime(String beginTime) {
          this.beginTime = beginTime;
      }
-     public Date getBeginTime() {
+     public String getBeginTime() {
          return beginTime;
      }
 
-    public void setDueTime(Date dueTime) {
+    public void setDueTime(String dueTime) {
          this.dueTime = dueTime;
      }
-     public Date getDueTime() {
+     public String getDueTime() {
          return dueTime;
      }
 

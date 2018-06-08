@@ -43,6 +43,16 @@ public class Member {
 	private int customDiscount;
 	private DiscountRule discountRule;
 	private List<MemberPresentDetail> memberPresentDetails;
+	
+	
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public void setMemberId(int memberId) {
 		this.memberId = memberId;

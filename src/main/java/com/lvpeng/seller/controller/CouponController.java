@@ -113,12 +113,12 @@ public class CouponController {
 		ResultBean result = new ResultBean();
 		Coupon bean = couponRepository.findById(couponId);
 		bean.setIsPresent(data.getIsPresent());
-		data.setIsSelfUse(data.getIsSelfUse());
-		data.setIsShow(data.getIsShow());
-		data.setIsShowHome(data.getIsShowHome());
-		data.setName(data.getName());
-		data.setPresentFee(data.getPresentFee());
-		data.setStock(data.getStock());
+		bean.setIsSelfUse(data.getIsSelfUse());
+		bean.setIsShow(data.getIsShow());
+		bean.setIsShowHome(data.getIsShowHome());
+		bean.setName(data.getName());
+		bean.setPresentFee(data.getPresentFee());
+		bean.setStock(data.getStock());
 		couponRepository.save(bean);
 		result.setCode(0);
 		return result;

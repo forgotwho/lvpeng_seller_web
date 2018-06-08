@@ -10,14 +10,16 @@ import com.lvpeng.seller.common.ResultBean;
 import com.lvpeng.seller.dal.model.Seller;
 import com.lvpeng.seller.dal.model.SellerShop;
 import com.lvpeng.seller.dal.model.Shop;
+import com.lvpeng.seller.dal.model.ShopCategory;
 import com.lvpeng.seller.dal.model.ShopChargeLimit;
 import com.lvpeng.seller.dal.repository.SellerRepository;
 import com.lvpeng.seller.dal.repository.SellerShopRepository;
+import com.lvpeng.seller.dal.repository.ShopCategoryRepository;
 import com.lvpeng.seller.dal.repository.ShopChargeLimitRepository;
 import com.lvpeng.seller.dal.repository.ShopRepository;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/init")
 public class InitController {
 
 	@Autowired
@@ -32,10 +34,13 @@ public class InitController {
 	@Autowired
 	private ShopChargeLimitRepository shopChargeLimitRepository;
 
+	@Autowired
+	private ShopCategoryRepository shopCategoryRepository;
+
 	/**
 	 * 初始化数据
 	 */
-	@RequestMapping("/init")
+	@RequestMapping()
 	public ResultBean init() {
 		ResultBean result = new ResultBean();
 
@@ -154,6 +159,36 @@ public class InitController {
 		result.setCode(0);
 
 		return result;
+	}
+
+	@RequestMapping(value = "/category")
+	public ResultBean category() {
+		ResultBean result = new ResultBean();
+		ShopCategory shopCategory = new ShopCategory();
+		shopCategory.setId(1);
+		shopCategory.setName("餐饮");
+		shopCategory.setPid(0);
+		shopCategoryRepository.save(shopCategory);
+
+		shopCategory = new ShopCategory();
+		shopCategory.setId(2);
+		shopCategory.setName("水果");
+		shopCategory.setPid(0);
+		shopCategoryRepository.save(shopCategory);
+
+		shopCategory = new ShopCategory();
+		shopCategory.setId(3);
+		shopCategory.setName("家电");
+		shopCategory.setPid(0);
+		shopCategoryRepository.save(shopCategory);
+		
+		shopCategory = new ShopCategory();
+		shopCategory.setId(4);
+		shopCategory.setName("艺术");
+		shopCategory.setPid(0);
+		shopCategoryRepository.save(shopCategory);
+		return result;
+
 	}
 
 }

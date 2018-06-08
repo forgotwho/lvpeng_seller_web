@@ -3,6 +3,7 @@
   */
 package com.lvpeng.seller.bean;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -42,8 +43,8 @@ public class MemberCardBean {
 	private Date createTime;
 	private Date updateTime;
 	private BonusRule bonusRule;
-	private List<DiscountRuleBean> discountRules;
-	private List<MemberPresentRuleBean> memberPresentRules;
+	private List<DiscountRuleBean> discountRules = new ArrayList<>();
+	private List<MemberPresentRuleBean> memberPresentRules = new ArrayList<>();
 
 	public void setId(int id) {
 		this.id = id;
