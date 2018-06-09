@@ -1,4 +1,4 @@
-package com.lvpeng.seller.controller;
+package com.lvpeng.seller.api;
 
 import java.util.Date;
 
@@ -31,9 +31,9 @@ public class AuthController {
 	/**
 	 * 登录
 	 */
-	@RequestMapping(value = "/login",produces="application/json;charset=UTF-8")
+	@RequestMapping(value = "/login", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public ResultBean login(String phone, String sms_code, String app_code) {
+	public ResultBean sellerLogin(String phone, String sms_code, String app_code) {
 		ResultBean result = new ResultBean();
 
 		Seller seller = sellerRepository.findByPhone(phone);
@@ -80,9 +80,9 @@ public class AuthController {
 	/**
 	 * 短信验证码
 	 */
-	@RequestMapping(value = "/sms_code",produces="application/json;charset=UTF-8")
+	@RequestMapping(value = "/sms_code", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public ResultBean sms_code(String phone) {
+	public ResultBean sendSmsCode(String phone) {
 		ResultBean result = new ResultBean();
 		try {
 			SmsCode smsCode = new SmsCode();
@@ -108,8 +108,8 @@ public class AuthController {
 	/**
 	 * 检查登录情况
 	 */
-	@RequestMapping(value="/check",produces="application/json;charset=UTF-8")
-	public ResultBean check(String login_code) {
+	@RequestMapping(value = "/check", produces = "application/json;charset=UTF-8")
+	public ResultBean checkLogin(String login_code) {
 		ResultBean result = new ResultBean();
 		Seller seller = sellerRepository.findByLoginCodeAndExpireTimeGreaterThan(login_code, new Date());
 		if (seller == null) {

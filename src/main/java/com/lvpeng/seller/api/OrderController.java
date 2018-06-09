@@ -1,4 +1,4 @@
-package com.lvpeng.seller.controller;
+package com.lvpeng.seller.api;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class OrderController {
 	 * 分页方法
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public ResultBean page(@RequestHeader("shop_id") int shopId, String from, String limit) {
+	public ResultBean getOrderList(@RequestHeader("shop_id") int shopId, String from, String limit, String status) {
 		ResultBean result = new ResultBean();
 		List<Order> beanList = orderRepository.findAll();
 		result.setCode(0);
@@ -34,12 +34,38 @@ public class OrderController {
 	}
 
 	/**
+	 * 创建订单
+	 */
+	@RequestMapping(method = RequestMethod.POST)
+	public ResultBean createOrder(@RequestHeader("shop_id") int shopId, @RequestBody Order data) {
+		ResultBean result = new ResultBean();
+		int orderId = (int) orderRepository.count() + 1;
+		data.setOrderId(orderId);
+		orderRepository.save(data);
+		result.setCode(0);
+		return result;
+	}
+
+	/**
+	 * 订单备注
+	 */
+	@RequestMapping(value = "/{orderId}/note", method = RequestMethod.PUT)
+	public ResultBean updateOrdreNote(@PathVariable int orderId, String sellerNote) {
+		ResultBean result = new ResultBean();
+		Order order = orderRepository.findByOrderId(orderId);
+		order.setSellerNote(sellerNote);
+		orderRepository.save(order);
+		result.setCode(0);
+		return result;
+	}
+
+	/**
 	 * 订单详情
 	 */
 	@RequestMapping(value = "/{orderId}", method = RequestMethod.GET)
-	public ResultBean info(@PathVariable String orderId) {
+	public ResultBean info(@PathVariable int orderId) {
 		ResultBean result = new ResultBean();
-		Order order = orderRepository.findById(orderId).get();
+		Order order = orderRepository.findByOrderId(orderId);
 		result.setCode(0);
 		result.setData(order);
 		return result;
@@ -49,23 +75,10 @@ public class OrderController {
 	 * 物流发货
 	 */
 	@RequestMapping(value = "/{orderId}/send", method = RequestMethod.PUT)
-	public ResultBean send(@PathVariable String orderId) {
+	public ResultBean send(@PathVariable int orderId) {
 		ResultBean result = new ResultBean();
-		Order order = orderRepository.findById(orderId).get();
+		Order order = orderRepository.findByOrderId(orderId);
 		order.setStatus(1);
-		orderRepository.save(order);
-		result.setCode(0);
-		return result;
-	}
-
-	/**
-	 * 订单备注
-	 */
-	@RequestMapping(value = "/{orderId}/note", method = RequestMethod.PUT)
-	public ResultBean note(@PathVariable String orderId, String sellerNote) {
-		ResultBean result = new ResultBean();
-		Order order = orderRepository.findById(orderId).get();
-		order.setSellerNote(sellerNote);
 		orderRepository.save(order);
 		result.setCode(0);
 		return result;
@@ -146,17 +159,6 @@ public class OrderController {
 		Order order = orderRepository.findById(orderId).get();
 		order.setStatus(6);
 		orderRepository.save(order);
-		result.setCode(0);
-		return result;
-	}
-
-	/**
-	 * 创建订单
-	 */
-	@RequestMapping(method = RequestMethod.POST)
-	public ResultBean createOrder(@RequestHeader("shop_id") int shopId, @RequestBody Order data) {
-		ResultBean result = new ResultBean();
-		orderRepository.save(data);
 		result.setCode(0);
 		return result;
 	}

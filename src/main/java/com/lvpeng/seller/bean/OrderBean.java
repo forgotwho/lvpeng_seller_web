@@ -6,6 +6,8 @@ package com.lvpeng.seller.bean;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.lvpeng.seller.dal.model.Customer;
 import com.lvpeng.seller.dal.model.OrderExpress;
 import com.lvpeng.seller.dal.model.OrderGoodsInfo;
@@ -19,6 +21,7 @@ import com.lvpeng.seller.dal.model.OrderPriceHistory;
  */
 public class OrderBean {
 
+	private String id;
 	private int orderId;
 	private String uuid;
 	private int customerId;
@@ -33,6 +36,7 @@ public class OrderBean {
 	private int shopId;
 	private String shopName;
 	private int paymentType;
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mi")
 	private Date orderTime;
 	private Date paymentTime;
 	private Date sendedTime;
@@ -67,6 +71,14 @@ public class OrderBean {
 	private Customer customer;
 	private String orderCloseNote;
 	private List<OrderPriceHistory> orderPriceHistory;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;

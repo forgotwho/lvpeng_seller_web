@@ -3,6 +3,7 @@
   */
 package com.lvpeng.seller.dal.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class Member {
 	private String offlineCard;
 	private int customDiscount;
 	private DiscountRule discountRule;
-	private List<MemberPresentDetail> memberPresentDetails;
+	private List<MemberPresentDetail> memberPresentDetails = new ArrayList<>();
 	
 	
 

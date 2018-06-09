@@ -1,4 +1,4 @@
-package com.lvpeng.seller.controller;
+package com.lvpeng.seller.api;
 
 import java.util.Date;
 
@@ -25,7 +25,7 @@ public class MemberCardController {
 	 * 会员卡信息
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public ResultBean info(@RequestHeader("shop_id") int shopId) {
+	public ResultBean getShopMemberCard(@RequestHeader("shop_id") int shopId) {
 		ResultBean result = new ResultBean();
 		MemberCard memberCard = memberCardRepository.findByShopId(shopId);
 		result.setData(memberCard);
@@ -37,9 +37,9 @@ public class MemberCardController {
 	 * 添加会员卡
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public ResultBean create(@RequestHeader("shop_id") int shopId, @RequestBody MemberCard data) {
+	public ResultBean createMemberCard(@RequestHeader("shop_id") int shopId, @RequestBody MemberCard data) {
 		ResultBean result = new ResultBean();
-		int id = (int)memberCardRepository.count()+1;
+		int id = (int) memberCardRepository.count() + 1;
 		data.setId(id);
 		data.setShopId(shopId);
 		data.setCreateTime(new Date());
@@ -52,7 +52,7 @@ public class MemberCardController {
 	 * 编辑会员卡
 	 */
 	@RequestMapping(method = RequestMethod.PUT)
-	public ResultBean update(@RequestHeader("shop_id") int shopId, @RequestBody MemberCard data) {
+	public ResultBean updateMemberCard(@RequestHeader("shop_id") int shopId, @RequestBody MemberCard data) {
 		ResultBean result = new ResultBean();
 		MemberCard bean = memberCardRepository.findByShopId(shopId);
 		BeanUtils.copyProperties(data, bean, new String[] { "id", "createTime", "shopId" });

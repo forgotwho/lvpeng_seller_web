@@ -1,4 +1,4 @@
-package com.lvpeng.seller.controller;
+package com.lvpeng.seller.api;
 
 import java.util.Date;
 import java.util.List;
@@ -28,8 +28,8 @@ public class SellerController {
 	/**
 	 * 获取卖家的店铺列表
 	 */
-	@RequestMapping(value = "/shop_list", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
-	public ResultBean list(@RequestHeader("login_code") String login_code) {
+	@RequestMapping(value = "/shop_list", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public ResultBean getSellerShopList(@RequestHeader("login_code") String login_code) {
 		ResultBean result = new ResultBean();
 
 		Seller seller = sellerRepository.findByLoginCodeAndExpireTimeGreaterThan(login_code, new Date());
@@ -43,6 +43,5 @@ public class SellerController {
 		result.setData(beanList);
 		return result;
 	}
-
 
 }

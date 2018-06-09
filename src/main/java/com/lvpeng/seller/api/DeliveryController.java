@@ -1,4 +1,4 @@
-package com.lvpeng.seller.controller;
+package com.lvpeng.seller.api;
 
 import java.util.Date;
 import java.util.List;
@@ -27,7 +27,7 @@ public class DeliveryController {
 	 * 分页方法
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public ResultBean page(@RequestHeader("shop_id") int shopId, String from, String limit) {
+	public ResultBean getDeliveryList(@RequestHeader("shop_id") int shopId, String from, String limit) {
 		ResultBean result = new ResultBean();
 		List<Delivery> beanList = deliveryRepository.findByShopId(shopId);
 		result.setCode(0);
@@ -39,7 +39,7 @@ public class DeliveryController {
 	 * 创建
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public ResultBean create(@RequestHeader("shop_id") int shopId, @RequestBody List<Delivery> dataList) {
+	public ResultBean createDelivery(@RequestHeader("shop_id") int shopId, @RequestBody List<Delivery> dataList) {
 		ResultBean result = new ResultBean();
 		for (Delivery data : dataList) {
 			data.setShopId(shopId);
@@ -54,7 +54,7 @@ public class DeliveryController {
 	 * 删除
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResultBean remove(@PathVariable String id) {
+	public ResultBean removeDelivery(@PathVariable String id) {
 		ResultBean result = new ResultBean();
 		deliveryRepository.deleteById(id);
 		result.setCode(0);
@@ -65,7 +65,7 @@ public class DeliveryController {
 	 * 更新
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResultBean update(@PathVariable String id, @RequestBody Delivery data) {
+	public ResultBean updateDelivery(@PathVariable String id, @RequestBody Delivery data) {
 		ResultBean result = new ResultBean();
 		Delivery bean = deliveryRepository.findById(id).get();
 		BeanUtils.copyProperties(data, bean, new String[] { "id", "createTime", "shopId" });

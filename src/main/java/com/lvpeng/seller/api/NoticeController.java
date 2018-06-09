@@ -1,4 +1,4 @@
-package com.lvpeng.seller.controller;
+package com.lvpeng.seller.api;
 
 import java.util.Date;
 import java.util.List;
@@ -27,7 +27,7 @@ public class NoticeController {
 	 * 分页方法
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public ResultBean page(@RequestHeader("shop_id") int shopId, String from, String limit, String status) {
+	public ResultBean getNotcieList(@RequestHeader("shop_id") int shopId, String from, String limit, String status) {
 		ResultBean result = new ResultBean();
 		List<Notice> beanList = null;
 		if("SHOW".equals(status)){
@@ -46,7 +46,7 @@ public class NoticeController {
 	 * 创建公告
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public ResultBean create(@RequestHeader("shop_id") int shopId, @RequestBody Notice data) {
+	public ResultBean createNotice(@RequestHeader("shop_id") int shopId, @RequestBody Notice data) {
 		ResultBean result = new ResultBean();
 		data.setShopId(shopId);
 		data.setCreateTime(new Date());
@@ -59,7 +59,7 @@ public class NoticeController {
 	 * 删除公告
 	 */
 	@RequestMapping(value = "/{noticeId}", method = RequestMethod.DELETE)
-	public ResultBean remove(@PathVariable String noticeId, @RequestHeader("shop_id") int shopId) {
+	public ResultBean removeNotice(@PathVariable String noticeId, @RequestHeader("shop_id") int shopId) {
 		ResultBean result = new ResultBean();
 		noticeRepository.deleteById(noticeId);
 		result.setCode(0);
@@ -70,7 +70,7 @@ public class NoticeController {
 	 * 单条信息
 	 */
 	@RequestMapping(value = "/{noticeId}", method = RequestMethod.GET)
-	public ResultBean info(@PathVariable String noticeId) {
+	public ResultBean getNotice(@PathVariable String noticeId) {
 		ResultBean result = new ResultBean();
 		Notice bean = noticeRepository.findById(noticeId).get();
 		result.setCode(0);
@@ -82,7 +82,7 @@ public class NoticeController {
 	 * 编辑公告
 	 */
 	@RequestMapping(value = "/{noticeId}", method = RequestMethod.PUT)
-	public ResultBean update(@PathVariable String noticeId, @RequestBody Notice data) {
+	public ResultBean updateNotice(@PathVariable String noticeId, @RequestBody Notice data) {
 		ResultBean result = new ResultBean();
 		Notice bean = noticeRepository.findById(noticeId).get();
 		BeanUtils.copyProperties(data, bean, new String[] { "id", "createTime", "shopId" });

@@ -15,13 +15,13 @@ import com.lvpeng.seller.dal.model.Member;
  */
 public class OrderCustomerCountBean {
 
-    private Date countValue;
+    private double countValue;
     private Customer customer;
     private Member member;
-    public void setCountValue(Date countValue) {
+    public void setCountValue(double countValue) {
          this.countValue = countValue;
      }
-     public Date getCountValue() {
+     public double getCountValue() {
          return countValue;
      }
 

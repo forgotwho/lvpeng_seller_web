@@ -15,4 +15,11 @@ public class RandomUtils {
 	public static String loginCode() {
 		return UUID.randomUUID().toString();
 	}
+	
+	public static String memberNumber() {
+		Random random = new Random();
+		DecimalFormat decimalFormat = new DecimalFormat("1000000000");
+		String code = String.format("%s", decimalFormat.format(random.nextInt(1000000000)));
+		return code;
+	}
 }

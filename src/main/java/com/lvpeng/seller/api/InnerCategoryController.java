@@ -1,4 +1,4 @@
-package com.lvpeng.seller.controller;
+package com.lvpeng.seller.api;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +17,7 @@ import com.lvpeng.seller.dal.model.InnerCategory;
 import com.lvpeng.seller.dal.repository.InnerCategoryRepository;
 
 @RestController
-@RequestMapping("/goods")
+@RequestMapping("/goods/inner_category")
 public class InnerCategoryController {
 
 	@Autowired
@@ -26,8 +26,8 @@ public class InnerCategoryController {
 	/**
 	 * 商品分类
 	 */
-	@RequestMapping(value = "/inner_category", method = RequestMethod.GET)
-	public ResultBean getInnerCategories(@RequestHeader("shop_id") int shopId) {
+	@RequestMapping(method = RequestMethod.GET)
+	public ResultBean getInnerCategoryList(@RequestHeader("shop_id") int shopId) {
 		ResultBean result = new ResultBean();
 		List<InnerCategory> beanList = innerCategoryRepository.findByShopId(shopId);
 		result.setCode(0);
@@ -38,8 +38,8 @@ public class InnerCategoryController {
 	/**
 	 * 新增商品分类
 	 */
-	@RequestMapping(value = "/inner_category", method = RequestMethod.POST)
-	public ResultBean addInnerCategories(@RequestHeader("shop_id") int shopId, @RequestBody InnerCategory data) {
+	@RequestMapping(method = RequestMethod.POST)
+	public ResultBean addInnerCategory(@RequestHeader("shop_id") int shopId, @RequestBody InnerCategory data) {
 		ResultBean result = new ResultBean();
 		int id = (int)innerCategoryRepository.count()+1;
 		data.setId(id);
@@ -53,8 +53,8 @@ public class InnerCategoryController {
 	/**
 	 * 更新商品分类
 	 */
-	@RequestMapping(value = "/inner_category", method = RequestMethod.PUT)
-	public ResultBean updateInnerCategories(@RequestBody InnerCategory data) {
+	@RequestMapping(method = RequestMethod.PUT)
+	public ResultBean updateInnerCategory(@RequestBody InnerCategory data) {
 		ResultBean result = new ResultBean();
 		InnerCategory bean = innerCategoryRepository.findById(data.getId());
 		BeanUtils.copyProperties(data, bean, new String[] { "id", "createTime", "shopId" });
@@ -67,8 +67,8 @@ public class InnerCategoryController {
 	/**
 	 * 删除商品分类
 	 */
-	@RequestMapping(value = "/inner_category/{id}", method = RequestMethod.DELETE)
-	public ResultBean removeInnerCategories(@PathVariable int id) {
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResultBean removeInnerCategory(@PathVariable int id) {
 		ResultBean result = new ResultBean();
 		innerCategoryRepository.delete(innerCategoryRepository.findById(id));
 		result.setCode(0);

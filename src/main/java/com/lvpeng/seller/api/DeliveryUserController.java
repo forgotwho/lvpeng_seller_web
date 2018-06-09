@@ -1,9 +1,8 @@
-package com.lvpeng.seller.controller;
+package com.lvpeng.seller.api;
 
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +26,7 @@ public class DeliveryUserController {
 	 * 配送员列表
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public ResultBean listDeliver(@RequestHeader("shop_id") int shopId) {
+	public ResultBean getDeliverUserList(@RequestHeader("shop_id") int shopId) {
 		ResultBean result = new ResultBean();
 		List<DeliveryUser> beanList = deliveryUserRepository.findByShopId(shopId);
 		result.setCode(0);
@@ -39,7 +38,7 @@ public class DeliveryUserController {
 	 * 创建
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public ResultBean createDeliver(@RequestHeader("shop_id") int shopId, @RequestBody DeliveryUser data) {
+	public ResultBean createDeliverUser(@RequestHeader("shop_id") int shopId, @RequestBody DeliveryUser data) {
 		ResultBean result = new ResultBean();
 		data.setShopId(shopId);
 		data.setCreateTime(new Date());
@@ -52,7 +51,7 @@ public class DeliveryUserController {
 	 * 删除
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResultBean removeDeliver(@PathVariable String id) {
+	public ResultBean removeDeliverUser(@PathVariable String id) {
 		ResultBean result = new ResultBean();
 		deliveryUserRepository.deleteById(id);
 		result.setCode(0);
@@ -63,7 +62,7 @@ public class DeliveryUserController {
 	 * 更新
 	 */
 	@RequestMapping(method = RequestMethod.PUT)
-	public ResultBean updateDeliver(@RequestBody DeliveryUser data) {
+	public ResultBean updateDeliverUser(@RequestBody DeliveryUser data) {
 		ResultBean result = new ResultBean();
 		data.setUpdateTime(new Date());
 		deliveryUserRepository.save(data);

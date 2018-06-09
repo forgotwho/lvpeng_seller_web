@@ -3,6 +3,7 @@
   */
 package com.lvpeng.seller.dal.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,8 +25,8 @@ public class DiscountRule {
 	private int discount;
 	private int upgradeFee;
 	private Date createTime;
-	private List<DiscountCategory> discountCategoryLists;
-	private List<DiscountGoods> discountGoodsLists;
+	private List<DiscountCategory> discountCategoryLists = new ArrayList<>();
+	private List<DiscountGoods> discountGoodsLists = new ArrayList<>();
 	
 	public String getId() {
 		return id;

@@ -1,17 +1,20 @@
 package com.lvpeng.seller.controller;
 
 import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lvpeng.seller.common.ResultBean;
+import com.lvpeng.seller.dal.model.Customer;
 import com.lvpeng.seller.dal.model.Seller;
 import com.lvpeng.seller.dal.model.SellerShop;
 import com.lvpeng.seller.dal.model.Shop;
 import com.lvpeng.seller.dal.model.ShopCategory;
 import com.lvpeng.seller.dal.model.ShopChargeLimit;
+import com.lvpeng.seller.dal.repository.CustomerRepository;
 import com.lvpeng.seller.dal.repository.SellerRepository;
 import com.lvpeng.seller.dal.repository.SellerShopRepository;
 import com.lvpeng.seller.dal.repository.ShopCategoryRepository;
@@ -36,6 +39,9 @@ public class InitController {
 
 	@Autowired
 	private ShopCategoryRepository shopCategoryRepository;
+	
+	@Autowired
+	private CustomerRepository customerRepository;
 
 	/**
 	 * 初始化数据
@@ -190,5 +196,29 @@ public class InitController {
 		return result;
 
 	}
+	
+	@RequestMapping(value = "/customer")
+	public void customer() {
+		customerRepository.deleteAll();
+		Customer customer = new Customer();
+		customer.setAppCode("XXX");
+		customer.setAvatarUrl("http://img.leshare.shop/seller/shulanriyongpin.png");
+		customer.setCity("上海市");
+		customer.setCountry("中国");
+		customer.setGender("M");
+		customer.setId(1);
+		customer.setLanguage("zh_CN");
+		customer.setLeAppid(1);
+		customer.setMember("");
+		customer.setNickName("Risingsun");
+		customer.setOpenId("1234567");
+		customer.setPhone("13816638520");
+		customer.setProvince("上海");
+		customer.setUnionId("");
+		customer.setCreateTime(new Date());
+		customerRepository.save(customer);
+	}
+	
+	
 
 }

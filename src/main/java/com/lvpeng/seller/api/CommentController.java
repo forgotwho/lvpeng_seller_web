@@ -1,4 +1,4 @@
-package com.lvpeng.seller.controller;
+package com.lvpeng.seller.api;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class CommentController {
 	 * 分页方法
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public ResultBean page(@RequestHeader("shop_id") int shopId, String from, String limit) {
+	public ResultBean getCommentList(@RequestHeader("shop_id") int shopId, String from, String limit, String status) {
 		ResultBean result = new ResultBean();
 		List<Comment> beanList = commentRepository.findAll();
 		result.setCode(0);

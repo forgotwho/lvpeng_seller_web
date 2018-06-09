@@ -3,10 +3,12 @@
   */
 package com.lvpeng.seller.dal.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * Auto-generated: 2018-06-07 13:36:39
@@ -22,8 +24,8 @@ public class Order {
 	private String uuid;
 	private int customerId;
 	private int status;
-	private double dealPrice;
-	private double finalPrice;
+	private BigDecimal dealPrice;
+	private BigDecimal finalPrice;
 	private int couponUsedId;
 	private String message;
 	private String address;
@@ -32,7 +34,7 @@ public class Order {
 	private int shopId;
 	private String shopName;
 	private int paymentType;
-	private Date orderTime;
+	private String orderTime;
 	private Date paymentTime;
 	private Date sendedTime;
 	private String closeTime;
@@ -43,9 +45,9 @@ public class Order {
 	private String takeOrderTime;
 	private String arrivedTime;
 	private String receivedTime;
-	private int postFee;
+	private BigDecimal postFee;
 	private String deliveryType;
-	private int couponPrice;
+	private BigDecimal couponPrice;
 	private String sellerNote;
 	private String formId;
 	private int reduceFee;
@@ -107,19 +109,19 @@ public class Order {
 		return status;
 	}
 
-	public void setDealPrice(double dealPrice) {
+	public void setDealPrice(BigDecimal dealPrice) {
 		this.dealPrice = dealPrice;
 	}
 
-	public double getDealPrice() {
+	public BigDecimal getDealPrice() {
 		return dealPrice;
 	}
 
-	public void setFinalPrice(double finalPrice) {
+	public void setFinalPrice(BigDecimal finalPrice) {
 		this.finalPrice = finalPrice;
 	}
 
-	public double getFinalPrice() {
+	public BigDecimal getFinalPrice() {
 		return finalPrice;
 	}
 
@@ -187,11 +189,11 @@ public class Order {
 		return paymentType;
 	}
 
-	public void setOrderTime(Date orderTime) {
+	public void setOrderTime(String orderTime) {
 		this.orderTime = orderTime;
 	}
 
-	public Date getOrderTime() {
+	public String getOrderTime() {
 		return orderTime;
 	}
 
@@ -275,11 +277,11 @@ public class Order {
 		return receivedTime;
 	}
 
-	public void setPostFee(int postFee) {
+	public void setPostFee(BigDecimal postFee) {
 		this.postFee = postFee;
 	}
 
-	public int getPostFee() {
+	public BigDecimal getPostFee() {
 		return postFee;
 	}
 
@@ -291,11 +293,11 @@ public class Order {
 		return deliveryType;
 	}
 
-	public void setCouponPrice(int couponPrice) {
+	public void setCouponPrice(BigDecimal couponPrice) {
 		this.couponPrice = couponPrice;
 	}
 
-	public int getCouponPrice() {
+	public BigDecimal getCouponPrice() {
 		return couponPrice;
 	}
 
