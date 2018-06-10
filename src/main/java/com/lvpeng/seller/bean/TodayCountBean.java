@@ -11,35 +11,35 @@ package com.lvpeng.seller.bean;
  */
 public class TodayCountBean {
 
-    private int income;
-    private int paymentOrder;
-    private int paymentGoods;
-    private int visitShopLog;
-    public void setIncome(int income) {
+    private double income;
+    private long paymentOrder;
+    private long paymentGoods;
+    private long visitShopLog;
+    public void setIncome(double income) {
          this.income = income;
      }
-     public int getIncome() {
+     public double getIncome() {
          return income;
      }
 
-    public void setPaymentOrder(int paymentOrder) {
+    public void setPaymentOrder(long paymentOrder) {
          this.paymentOrder = paymentOrder;
      }
-     public int getPaymentOrder() {
+     public long getPaymentOrder() {
          return paymentOrder;
      }
 
-    public void setPaymentGoods(int paymentGoods) {
+    public void setPaymentGoods(long paymentGoods) {
          this.paymentGoods = paymentGoods;
      }
-     public int getPaymentGoods() {
+     public long getPaymentGoods() {
          return paymentGoods;
      }
 
-    public void setVisitShopLog(int visitShopLog) {
+    public void setVisitShopLog(long visitShopLog) {
          this.visitShopLog = visitShopLog;
      }
-     public int getVisitShopLog() {
+     public long getVisitShopLog() {
          return visitShopLog;
      }
 

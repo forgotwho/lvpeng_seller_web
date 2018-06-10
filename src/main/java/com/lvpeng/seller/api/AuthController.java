@@ -31,8 +31,7 @@ public class AuthController {
 	/**
 	 * 登录
 	 */
-	@RequestMapping(value = "/login", produces = "application/json;charset=UTF-8")
-	@ResponseBody
+	@RequestMapping(value = "/login")
 	public ResultBean sellerLogin(String phone, String sms_code, String app_code) {
 		ResultBean result = new ResultBean();
 
@@ -80,8 +79,7 @@ public class AuthController {
 	/**
 	 * 短信验证码
 	 */
-	@RequestMapping(value = "/sms_code", produces = "application/json;charset=UTF-8")
-	@ResponseBody
+	@RequestMapping(value = "/sms_code")
 	public ResultBean sendSmsCode(String phone) {
 		ResultBean result = new ResultBean();
 		try {
@@ -108,7 +106,7 @@ public class AuthController {
 	/**
 	 * 检查登录情况
 	 */
-	@RequestMapping(value = "/check", produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "/check")
 	public ResultBean checkLogin(String login_code) {
 		ResultBean result = new ResultBean();
 		Seller seller = sellerRepository.findByLoginCodeAndExpireTimeGreaterThan(login_code, new Date());
