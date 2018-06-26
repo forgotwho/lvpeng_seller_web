@@ -162,12 +162,14 @@ public class InitController {
 		shopChargeLimit.setCreateTime(new Date());
 		shopChargeLimit = shopChargeLimitRepository.save(shopChargeLimit);
 
+		
+		category();
+		//customer();
 		result.setCode(0);
 
 		return result;
 	}
 
-	@RequestMapping(value = "/category")
 	public ResultBean category() {
 		ResultBean result = new ResultBean();
 		ShopCategory shopCategory = new ShopCategory();
@@ -197,7 +199,6 @@ public class InitController {
 
 	}
 	
-	@RequestMapping(value = "/customer")
 	public void customer() {
 		customerRepository.deleteAll();
 		Customer customer = new Customer();
