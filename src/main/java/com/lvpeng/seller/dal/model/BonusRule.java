@@ -29,6 +29,14 @@ public class BonusRule {
 	private Date createTime;
 	private int isCost;
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public void setCardId(int cardId) {
 		this.cardId = cardId;
 	}

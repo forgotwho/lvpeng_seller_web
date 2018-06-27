@@ -22,7 +22,7 @@ public class Goods {
 	private String name;
 	private int shopId;
 	private int status;
-	private int originalPrice;
+	private double originalPrice;
 	private double sellPrice;
 	private int innerCid;
 	private String innerCategoryName;
