@@ -9,7 +9,7 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 
 /**
- * Auto-generated: 2018-06-07 13:13:42
+ * Auto-generated: 2018-06-23 22:43:35
  *
  * @author bejson.com (i@bejson.com)
  * @website http://www.bejson.com/java2pojo/
@@ -47,6 +47,7 @@ public class Goods {
 	private List<GoodsDetail> goodsDetails;
 	private GoodsSkuInfo goodsSkuInfo;
 	private List<String> tags;
+	private String booking;
 
 	public void setId(int id) {
 		this.id = id;
@@ -88,11 +89,11 @@ public class Goods {
 		return status;
 	}
 
-	public void setOriginalPrice(int originalPrice) {
+	public void setOriginalPrice(double originalPrice) {
 		this.originalPrice = originalPrice;
 	}
 
-	public int getOriginalPrice() {
+	public double getOriginalPrice() {
 		return originalPrice;
 	}
 
@@ -286,6 +287,14 @@ public class Goods {
 
 	public List<String> getTags() {
 		return tags;
+	}
+
+	public void setBooking(String booking) {
+		this.booking = booking;
+	}
+
+	public String getBooking() {
+		return booking;
 	}
 
 }

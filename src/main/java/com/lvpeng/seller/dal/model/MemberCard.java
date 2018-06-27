@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 /**
  * Auto-generated: 2018-06-07 11:31:33
@@ -41,9 +42,12 @@ public class MemberCard {
 	private String servicePhone;
 	private Date createTime;
 	private Date updateTime;
+	@DBRef
 	private BonusRule bonusRule;
-	private List<DiscountRule> discountRules = new ArrayList<>();
-	private List<MemberPresentRule> memberPresentRules = new ArrayList<>();
+	@DBRef
+	private List<DiscountRule> discountRules;
+	@DBRef
+	private List<MemberPresentRule> memberPresentRules;
 
 	public void setId(int id) {
 		this.id = id;

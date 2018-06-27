@@ -20,8 +20,8 @@ public class OrderGoodsInfo {
     private String imageUrl;
     private String goodsName;
     private String goodsSku;
-    private int goodsPrice;
-    private int goodsSellPrice;
+    private double goodsPrice;
+    private double goodsSellPrice;
     private int count;
     private int innerCid;
     
@@ -59,17 +59,17 @@ public class OrderGoodsInfo {
          return goodsSku;
      }
 
-    public void setGoodsPrice(int goodsPrice) {
+    public void setGoodsPrice(double goodsPrice) {
          this.goodsPrice = goodsPrice;
      }
-     public int getGoodsPrice() {
+     public double getGoodsPrice() {
          return goodsPrice;
      }
 
-    public void setGoodsSellPrice(int goodsSellPrice) {
+    public void setGoodsSellPrice(double goodsSellPrice) {
          this.goodsSellPrice = goodsSellPrice;
      }
-     public int getGoodsSellPrice() {
+     public double getGoodsSellPrice() {
          return goodsSellPrice;
      }
 

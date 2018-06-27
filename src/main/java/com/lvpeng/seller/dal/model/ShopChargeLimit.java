@@ -15,7 +15,7 @@ import org.springframework.data.annotation.Id;
 public class ShopChargeLimit {
 
 	@Id
-	public String id;
+	private String id;
     private int shopId;
     private int couponLimit;
     private int memberLimit;

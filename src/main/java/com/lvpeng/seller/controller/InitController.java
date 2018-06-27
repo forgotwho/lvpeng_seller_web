@@ -38,7 +38,7 @@ public class InitController {
 
 	@Autowired
 	private ShopCategoryRepository shopCategoryRepository;
-	
+
 	@Autowired
 	private CustomerRepository customerRepository;
 
@@ -93,77 +93,7 @@ public class InitController {
 		shopChargeLimit.setCreateTime(new Date());
 		shopChargeLimit = shopChargeLimitRepository.save(shopChargeLimit);
 
-		seller = new Seller();
-		seller.setId(2);
-		seller.setName("Risingsun");
-		seller.setPhone("13800138001");
-		seller.setAppCode("XXX");
-		seller.setStatus("01");
-		seller.setCreateTime(new Date());
-
-		seller = sellerRepository.save(seller);
-
-		shop = new Shop();
-		shop.setId(2);
-		shop.setName("南化饭来张口");
-		shop.setAvatar("http://img.leshare.shop/seller/shulanriyongpin.png");
-		shop.setExpiredTime("2019-06-08 00:00:00");
-		shop.setCreateTime(new Date());
-		shop = shopRepository.save(shop);
-
-		sellerShop = new SellerShop();
-		sellerShop.setSeller(seller.getName());
-		sellerShop.setSellerId(seller.getId());
-		sellerShop.setShopId(shop.getId());
-		sellerShop.setShopName(shop.getName());
-		sellerShop.setAvatar(shop.getAvatar());
-		sellerShop.setExpiredTime(shop.getExpiredTime());
-		sellerShop.setCreateTime(new Date());
-
-		sellerShop = sellerShopRepository.save(sellerShop);
-
-		shopChargeLimit = new ShopChargeLimit();
-		shopChargeLimit.setShopId(shop.getId());
-		shopChargeLimit.setCouponLimit(100);
-		shopChargeLimit.setMemberLimit(100);
-		shopChargeLimit.setMpLimit(100);
-		shopChargeLimit.setOrderLimit(100);
-		shopChargeLimit.setSmsLimit(100);
-		shopChargeLimit.setCreateTime(new Date());
-		shopChargeLimit = shopChargeLimitRepository.save(shopChargeLimit);
-
-		shop = new Shop();
-		shop.setId(3);
-		shop.setName("上海饭来张口");
-		shop.setAvatar("http://img.leshare.shop/seller/shulanriyongpin.png");
-		shop.setExpiredTime("2019-06-08 00:00:00");
-		shop.setCreateTime(new Date());
-		shop = shopRepository.save(shop);
-
-		sellerShop = new SellerShop();
-		sellerShop.setSeller(seller.getName());
-		sellerShop.setSellerId(seller.getId());
-		sellerShop.setShopId(shop.getId());
-		sellerShop.setShopName(shop.getName());
-		sellerShop.setAvatar(shop.getAvatar());
-		sellerShop.setExpiredTime(shop.getExpiredTime());
-		sellerShop.setCreateTime(new Date());
-
-		sellerShop = sellerShopRepository.save(sellerShop);
-
-		shopChargeLimit = new ShopChargeLimit();
-		shopChargeLimit.setShopId(shop.getId());
-		shopChargeLimit.setCouponLimit(100);
-		shopChargeLimit.setMemberLimit(100);
-		shopChargeLimit.setMpLimit(100);
-		shopChargeLimit.setOrderLimit(100);
-		shopChargeLimit.setSmsLimit(100);
-		shopChargeLimit.setCreateTime(new Date());
-		shopChargeLimit = shopChargeLimitRepository.save(shopChargeLimit);
-
-		
 		category();
-		//customer();
 		result.setCode(0);
 
 		return result;
@@ -188,7 +118,7 @@ public class InitController {
 		shopCategory.setName("家电");
 		shopCategory.setPid(0);
 		shopCategoryRepository.save(shopCategory);
-		
+
 		shopCategory = new ShopCategory();
 		shopCategory.setId(4);
 		shopCategory.setName("艺术");
@@ -197,7 +127,7 @@ public class InitController {
 		return result;
 
 	}
-	
+
 	public void customer() {
 		customerRepository.deleteAll();
 		Customer customer = new Customer();
@@ -218,7 +148,5 @@ public class InitController {
 		customer.setCreateTime(new Date());
 		customerRepository.save(customer);
 	}
-	
-	
 
 }

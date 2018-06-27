@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * Auto-generated: 2018-06-07 13:36:39
@@ -34,7 +33,7 @@ public class Order {
 	private int shopId;
 	private String shopName;
 	private int paymentType;
-	private String orderTime;
+	private Date orderTime;
 	private Date paymentTime;
 	private Date sendedTime;
 	private String closeTime;
@@ -189,11 +188,11 @@ public class Order {
 		return paymentType;
 	}
 
-	public void setOrderTime(String orderTime) {
+	public void setOrderTime(Date orderTime) {
 		this.orderTime = orderTime;
 	}
 
-	public String getOrderTime() {
+	public Date getOrderTime() {
 		return orderTime;
 	}
 
