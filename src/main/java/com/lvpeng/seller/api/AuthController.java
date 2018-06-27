@@ -83,6 +83,15 @@ public class AuthController {
 	public ResultBean sendSmsCode(String phone) {
 		ResultBean result = new ResultBean();
 		try {
+			Seller seller = sellerRepository.findByPhone(phone);
+
+			if (seller == null) {
+				result.setCode(-1);
+				ErrorBean error = new ErrorBean("手机号不存在");
+				result.setData(error);
+				return result;
+			}
+			
 			SmsCode smsCode = new SmsCode();
 			smsCode.setPhone(phone);
 			smsCode.setCode(RandomUtils.smsCode());

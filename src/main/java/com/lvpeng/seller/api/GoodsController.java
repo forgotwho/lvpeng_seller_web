@@ -31,7 +31,7 @@ public class GoodsController {
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ResultBean getGoodsList(@RequestHeader("shop_id") int shopId, String from, String limit, String goods_status,
-			Integer category_id) {
+			String category_id) {
 		ResultBean result = new ResultBean();
 		List<Goods> beanList = goodsRepository.findByShopId(shopId);
 		result.setCode(0);

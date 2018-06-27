@@ -1,7 +1,6 @@
 package com.lvpeng.seller.controller;
 
 import java.util.Date;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,8 +56,8 @@ public class InitController {
 
 		Seller seller = new Seller();
 		seller.setId(1);
-		seller.setName("吕鹏");
-		seller.setPhone("13800138000");
+		seller.setName("Risingsun");
+		seller.setPhone("13816638520");
 		seller.setAppCode("XXX");
 		seller.setStatus("01");
 		seller.setCreateTime(new Date());
