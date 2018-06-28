@@ -9,5 +9,7 @@ import com.lvpeng.seller.dal.model.Order;
 public interface OrderRepository extends MongoRepository<Order, String> {
 	public List<Order> findByShopId(int shopId);
 	
+	public List<Order> findByStatus(int status);
+	
 	public Order findByOrderId(int orderId);
 }

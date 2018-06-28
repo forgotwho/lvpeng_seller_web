@@ -66,7 +66,7 @@ public class InitController {
 
 		Shop shop = new Shop();
 		shop.setId(1);
-		shop.setName("十堰饭来张口");
+		shop.setName("饭来张口");
 		shop.setAvatar("http://ostb6zm4z.bkt.clouddn.com/SMGZJ.png");
 		shop.setExpiredTime("2019-06-08 00:00:00");
 		shop.setCreateTime(new Date());

@@ -1,5 +1,6 @@
 package com.lvpeng.seller.api;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lvpeng.seller.common.ResultBean;
 import com.lvpeng.seller.dal.model.Order;
+import com.lvpeng.seller.dal.model.OrderExpress;
 import com.lvpeng.seller.dal.repository.OrderRepository;
 
 @RestController
@@ -25,9 +27,14 @@ public class OrderController {
 	 * 分页方法
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public ResultBean getOrderList(@RequestHeader("shop_id") int shopId, String from, String limit, String status) {
+	public ResultBean getOrderList(@RequestHeader("shop_id") int shopId, Integer from, Integer limit, Integer status) {
 		ResultBean result = new ResultBean();
-		List<Order> beanList = orderRepository.findAll();
+		List<Order> beanList = new ArrayList<>();
+		if(status!=null&&status.intValue()>0){
+			beanList = orderRepository.findByStatus(status);
+		}else{
+			beanList = orderRepository.findAll();
+		}
 		result.setCode(0);
 		result.setData(beanList);
 		return result;
@@ -50,10 +57,10 @@ public class OrderController {
 	 * 订单备注
 	 */
 	@RequestMapping(value = "/{orderId}/note", method = RequestMethod.PUT)
-	public ResultBean updateOrdreNote(@PathVariable int orderId, String sellerNote) {
+	public ResultBean updateOrdreNote(@PathVariable int orderId, @RequestBody Order noteBean) {
 		ResultBean result = new ResultBean();
 		Order order = orderRepository.findByOrderId(orderId);
-		order.setSellerNote(sellerNote);
+		order.setSellerNote(noteBean.getSellerNote());
 		orderRepository.save(order);
 		result.setCode(0);
 		return result;
@@ -75,10 +82,11 @@ public class OrderController {
 	 * 物流发货
 	 */
 	@RequestMapping(value = "/{orderId}/send", method = RequestMethod.PUT)
-	public ResultBean send(@PathVariable int orderId) {
+	public ResultBean send(@PathVariable int orderId, @RequestBody OrderExpress orderExpress) {
 		ResultBean result = new ResultBean();
 		Order order = orderRepository.findByOrderId(orderId);
-		order.setStatus(1);
+		order.setStatus(3);
+		order.setOrderExpress(orderExpress);
 		orderRepository.save(order);
 		result.setCode(0);
 		return result;
@@ -98,10 +106,10 @@ public class OrderController {
 	 * 关闭订单
 	 */
 	@RequestMapping(value = "/{orderId}/status/close", method = RequestMethod.PUT)
-	public ResultBean close(@PathVariable String orderId, String note) {
+	public ResultBean close(@PathVariable Integer orderId, String note) {
 		ResultBean result = new ResultBean();
-		Order order = orderRepository.findById(orderId).get();
-		order.setStatus(2);
+		Order order = orderRepository.findByOrderId(orderId);
+		order.setStatus(5);
 		order.setMessage(note);
 		orderRepository.save(order);
 		result.setCode(0);
