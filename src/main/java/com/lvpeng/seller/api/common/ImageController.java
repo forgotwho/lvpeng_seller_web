@@ -78,5 +78,4 @@ public class ImageController {
 		File result = fileRepository.findById(fileId).get();
 		return result.getContent();
 	}
-
 }
